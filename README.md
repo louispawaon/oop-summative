@@ -1,4 +1,4 @@
-# oop-summative
-## This contains our output for our Summative Assessment for Object-Oriented Programming 
+# BASIC SECURITY TRAINEE INFORMATION SYSTEM
+## This is our Summative Assessment Output Repository for Object-Oriented Programming (4-306)
 
 -to be updated-
