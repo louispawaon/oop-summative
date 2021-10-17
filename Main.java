@@ -22,8 +22,8 @@ public class Main {
 - Email Address
 
 IF COURSE CHOICE = RTC OR BSSC:
-    - SSS Number (Optional) - pwede ni walay unod specially sa mga mag PLTC pa kay wala pa jud silay TIN kay trainee pa
-    - TIN Number (Optional) - pwede ni walay unod specially sa mga mag PLTC pa kay wala pa jud silay TIN kay trainee pa
+    - SSS Number
+    - TIN Number
     - SG License Number (For RTC Trainees Only)
         - Expiry Date of SG License Number
     - SBR Number (For RTC Trainees Only)
