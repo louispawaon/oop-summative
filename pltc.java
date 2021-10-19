@@ -1,10 +1,10 @@
 public class pltc {
-    private String courseName;
-    private String teacher;
-    private String[] curriculum;
+    private static String courseName; //fixed courseName
+    private static String teacher; //fixed teacher - kay isa ra ka instructor sa amo kada course
+    private static String[] curriculum; //same rag curriculum sa isa ka course
     //wala pa schedule
-    private double tuition;
-    private float units;
+    private static double tuition; //fixed na daan ang tuition
+    private static float units; //fixed units 
     private String[] classmates;
 
     private String getCourse(){
