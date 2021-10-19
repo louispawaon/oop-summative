@@ -20,6 +20,10 @@ public class rtc {
         return curriculum;
     }
 
+    private LinkedHashMap<String, Integer> getSchedule(){
+        return schedule;
+    }
+
     private double getTuition(){
         return tuition;
     }
