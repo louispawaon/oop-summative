@@ -8,31 +8,31 @@ public class bssc {
     private static float units = 3; //fixed units 
     private String[] classmates;
 
-    private String getCourse(){
+    public String getCourse(){
         return courseName;
     }
 
-    private String getTeacher(){
+    public String getTeacher(){
         return teacher;
     }
 
-    private String[] getCurriculum(){
+    public String[] getCurriculum(){
         return curriculum;
     }
     
-    private LinkedHashMap<String, Integer> getSchedule(){
+    public LinkedHashMap<String, Integer> getSchedule(){
         return schedule;
     }
 
-    private double getTuition(){
+    public double getTuition(){
         return tuition;
     }
 
-    private float getUnits(){
+    public float getUnits(){
         return units;
     }
 
-    private String[] getClassmates(){
+    public String[] getClassmates(){
         return classmates;
     }
 
