@@ -44,7 +44,7 @@ public class Main {
         }
     }
     
-    private static void StudentForm(String courseName, List<Object> data) {
+    private static void StudentForm(String courseName, int course, List<Object> data) {
         String birthdate;
         char sex;
         int yearGraduated;
@@ -58,7 +58,7 @@ public class Main {
         data.add(scanner.nextLine());
         System.out.print("\nMiddle Name: ");
         data.add(scanner.nextLine());
-        System.out.print("\n> Birthdate (YYYY, MM, DD): ");
+        System.out.print("\n> Birthdate (YYYY-MM-DD): ");
         birthdate = scanner.nextLine(); // TODO: VERIFY BIRTHDATE
         data.add(birthdate);
         do {
@@ -76,6 +76,30 @@ public class Main {
         data.add(scanner.nextLine()); // TODO: VERIFY NUMBER
         System.out.print("\n> E-mail Address: ");
         data.add(scanner.nextLine()); // TODO: VERIFY EMAIL
+
+        // ADDITIONAL DATA FOR RTC or BSSC
+        if (course == 2) { // RTC
+            System.out.print("\n- - - REQUIRED DATA FIELDS FOR " + courseName + " - - -");
+            System.out.print("\n> SSS Number: "); // TODO: VERIFY SSS
+            data.add(scanner.nextLong());
+            System.out.print("\n> TIN Number: "); // TODO: VERIFY TIN
+            data.add(scanner.nextLong());
+            System.out.print("\n> SG License Number: "); // TODO: VERIFY SG
+            data.add(scanner.nextLong());
+            System.out.print("\n> SG License Expiry Date (YYYY-MM-DD): "); // TODO: VERIFY DATE
+            scanner.nextLine();
+            data.add(scanner.nextLine());
+            System.out.print("\n> SBR Number: "); // TODO: VERIFY SBR
+            data.add(scanner.nextLong());
+        }
+        else if (course == 3) { // BSSC
+            System.out.print("\n- - - REQUIRED DATA FIELDS FOR " + courseName + " - - -");
+            System.out.print("\n> SSS Number: "); // TODO: VERIFY SBR
+            data.add(scanner.nextLong());
+            System.out.print("\n> TIN Number: "); // TODO: VERIFY SBR
+            data.add(scanner.nextLong());
+            scanner.nextLine();
+        }
     }
 
     private static void CheckRecords() {
@@ -117,26 +141,29 @@ public class Main {
         // SWITCH COURSE DATA REQUIREMENTS
         switch (course) {
             case 1:
-                StudentForm("Pre-Licensing Training Course (PLTC)", data);
+                StudentForm("Pre-Licensing Training Course (PLTC)", course, data);
                 break;
             case 2:
-                StudentForm("Refresher Training Course (RTC)", data);
+                StudentForm("Refresher Training Course (RTC)", course, data);
                 break;
             case 3:
-                StudentForm("Basic Security Supervisory Course (BSSC)", data);
+                StudentForm("Basic Security Supervisory Course (BSSC)", course, data);
                 break;
             case 4:
                 ModePrompt();
                 break;
         }
 
+        // CHECK IF data IS EMPTY
         if (data.isEmpty() == false) {
             // new STUDENT and add it to current student list
             // TODO: student list
             // TODO: REMOVE DISPLAY
-            System.out.println("Size: " + data.size());
-            for (Object i: data)
-                System.out.println(i);
+            System.out.println("Size: " + data.size()); // FOR MY GUIDE ONLY
+            String[] dataVariables = {"surname", "name", "middleName", "birthdate", "sex", "educationalAttainment", "yearGraduated", "cpNum", "email", "sssNum", "tinNum", "sgLicense", "sgLicenseExpiryDate", "sbrNum"};
+            for (int i = 0; i < data.size(); i++) {
+                System.out.println(i + " " + data.get(i).getClass() + " " + dataVariables[i] + ": " + data.get(i));
+            }
         }
 
     }
