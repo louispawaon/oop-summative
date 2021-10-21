@@ -91,8 +91,7 @@ public class Student {
         return age;
     }
 
-    public void setAge(String birthDate)throws ParseException{ //test 
-        this.birthDate=birthDate;
+    public void setAge()throws ParseException{ //test 
         LocalDate today = LocalDate.now();
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
         Date date = format.parse(birthDate);
