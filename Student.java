@@ -2,6 +2,9 @@ import java.util.*;
 import java.time.*;
 import java.text.*;
 
+
+//If ma decide na i long ang SSSNUm -> SBRNum isntead na string i change lang 
+
 public class Student {
     private int studentNum=0;
     private String name;
@@ -15,8 +18,62 @@ public class Student {
     private String SSSNum;
     private String TINNum;
     private String SGLicense;
-    private Date expiryDate; //dle pa sure
+    private String expiryDate; 
     private String SBRNum;
+
+    //PLTC
+    Student(int studentNum,
+    String name,
+    String birthDate,
+    char sex,
+    Period age,
+    String educationalAttainment,
+    int yearGraduate,
+    String cpNum,
+    String email)
+    {
+        
+        
+    }
+
+    //RTC
+    Student(int studentNum,
+    String name,
+    String birthDate,
+    char sex,
+    Period age,
+    String educationalAttainment,
+    int yearGraduate,
+    String cpNum,
+    String email,
+    String SSSNum,
+    String TINNum,
+    String SGLicense,
+    String expiryDat,
+    String SBRNum)
+    {
+        
+        
+    }
+
+    //BSSC
+    Student(int studentNum,
+    String name,
+    String birthDate,
+    char sex,
+    Period age,
+    String educationalAttainment,
+    int yearGraduate,
+    String cpNum,
+    String email,
+    String SSSNum,
+    String TINNum
+    )
+    {
+        
+        
+    }
+
 
     public int getStudentNum(){
         return studentNum;
@@ -34,10 +91,11 @@ public class Student {
         return age;
     }
 
-    public void setAge(String bday)throws ParseException{ //test 
+    public void setAge(String birthDate)throws ParseException{ //test 
+        this.birthDate=birthDate;
         LocalDate today = LocalDate.now();
-        SimpleDateFormat format = new SimpleDateFormat("MMMM dd, yyyy", Locale.ENGLISH);
-        Date date = format.parse(bday);
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
+        Date date = format.parse(birthDate);
         Calendar cal = Calendar.getInstance();
         cal.setTime(date);
         int year=cal.get(Calendar.YEAR);
@@ -65,6 +123,26 @@ public class Student {
 
     public String getEmail(){
         return email;
+    }
+
+    public String getSSSNum(){
+        return SSSNum;
+    }
+
+    public String getTINNum(){
+        return TINNum;
+    }
+
+    public String getSGLicense(){
+        return SGLicense;
+    }
+
+    public String getExpiryDate(){
+        return expiryDate;
+    }
+
+    public String getSBRNum(){
+        return SBRNum;
     }
 
 }
