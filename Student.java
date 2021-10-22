@@ -2,25 +2,23 @@ import java.util.*;
 import java.time.*;
 import java.text.*;
 
-
-//If ma decide na i long ang SSSNUm -> SBRNum isntead na string i change lang 
-
 public class Student {
     private int studentNum=0;
     private String name;
-    private String birthDate;//dle pa sure
+    private String birthDate;
     private char sex;
     private Period age;
     private String educationalAttainment;
     private int yearGraduated;
     private String cpNum;
     private String email;
-    private String SSSNum;
-    private String TINNum;
+    private long SSSNum;
+    private long TINNum;
     private String SGLicense;
     private String expiryDate; 
-    private String SBRNum;
+    private long SBRNum;
 
+/*
     //PLTC
     Student(int studentNum,
     String name,
@@ -28,11 +26,19 @@ public class Student {
     char sex,
     Period age,
     String educationalAttainment,
-    int yearGraduate,
+    int yearGraduated,
     String cpNum,
     String email)
     {
-        
+        this.studentNum=studentNum;
+        this.name = name;
+        this.birthDate=birthDate;
+        this.sex=sex;
+        this.age=age;
+        this.educationalAttainment=educationalAttainment;
+        this.yearGraduated=yearGraduated;
+        this.cpNum=cpNum;
+        this.email=email;
         
     }
 
@@ -43,17 +49,29 @@ public class Student {
     char sex,
     Period age,
     String educationalAttainment,
-    int yearGraduate,
+    int yearGraduated,
     String cpNum,
     String email,
-    String SSSNum,
-    String TINNum,
+    long SSSNum,
+    long TINNum,
     String SGLicense,
-    String expiryDat,
-    String SBRNum)
+    String expiryDate,
+    long SBRNum)
     {
-        
-        
+        this.studentNum=studentNum;
+        this.name = name;
+        this.birthDate=birthDate;
+        this.sex=sex;
+        this.age=age;
+        this.educationalAttainment=educationalAttainment;
+        this.yearGraduated=yearGraduated;
+        this.cpNum=cpNum;
+        this.email=email;
+        this.SSSNum=SSSNum;
+        this.TINNum=TINNum;
+        this.SGLicense=SGLicense;
+        this.expiryDate=expiryDate;
+        this.SBRNum=SBRNum;  
     }
 
     //BSSC
@@ -63,18 +81,27 @@ public class Student {
     char sex,
     Period age,
     String educationalAttainment,
-    int yearGraduate,
+    int yearGraduated,
     String cpNum,
     String email,
-    String SSSNum,
-    String TINNum
+    long SSSNum,
+    long TINNum
     )
     {
-        
-        
+        this.studentNum=studentNum;
+        this.name = name;
+        this.birthDate=birthDate;
+        this.sex=sex;
+        this.age=age;
+        this.educationalAttainment=educationalAttainment;
+        this.yearGraduated=yearGraduated;
+        this.cpNum=cpNum;
+        this.email=email;
+        this.SSSNum=SSSNum;
+        this.TINNum=TINNum;    
     }
 
-
+*/
     public int getStudentNum(){
         return studentNum;
     }
@@ -124,11 +151,11 @@ public class Student {
         return email;
     }
 
-    public String getSSSNum(){
+    public long getSSSNum(){
         return SSSNum;
     }
 
-    public String getTINNum(){
+    public long getTINNum(){
         return TINNum;
     }
 
@@ -140,7 +167,7 @@ public class Student {
         return expiryDate;
     }
 
-    public String getSBRNum(){
+    public long getSBRNum(){
         return SBRNum;
     }
 
