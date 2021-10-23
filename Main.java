@@ -115,7 +115,10 @@ public class Main {
 
         // I used Object class so I can store different data types into one list
         List<Object> data = new ArrayList<Object>();
-
+        
+        
+        
+        
         // CHOOSE COURSE PROMPT
         System.out.println("\n- - - COURSES OFFERED - - -" +
         "\n1 - Pre-Licensing Training Course (PLTC)" +
@@ -142,12 +145,21 @@ public class Main {
         switch (course) {
             case 1:
                 StudentForm("Pre-Licensing Training Course (PLTC)", course, data);
+                Student prelicense = new pltc(data);
+                System.out.println("Status: "+prelicense.getStatus());
+                System.out.println("Surname: "+prelicense.getSurname());
                 break;
             case 2:
                 StudentForm("Refresher Training Course (RTC)", course, data);
+                Student refresher = new rtc(data);
+                System.out.println("Status: "+refresher.getStatus());
+                System.out.println("Surname: "+refresher.getSurname());
                 break;
             case 3:
                 StudentForm("Basic Security Supervisory Course (BSSC)", course, data);
+                Student basic = new bssc(data);
+                System.out.println("Status: "+basic.getStatus());
+                System.out.println("Surname: "+basic.getSurname());
                 break;
             case 4:
                 ModePrompt();
