@@ -2,7 +2,6 @@ import java.util.*;
 public class bssc extends Student{
     public bssc(List<Object> data) {
         super(data);
-        //TODO Auto-generated constructor stub
     }
     private static String courseName = "BSSC"; //fixed courseName
     private static String teacher = "Mr. Rommel Pawaon"; //fixed teacher - kay isa ra ka instructor sa amo kada course

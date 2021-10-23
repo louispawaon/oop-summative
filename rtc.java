@@ -1,15 +1,7 @@
 import java.util.*;
 public class rtc extends Student{
-    // public rtc(String surname, String name, String middleName, String birthDate, char sex, String educationalAttainment,
-    //         int yearGraduated, String cpNum, String email, long SSSNum, long TINNum, String SGLicense,
-    //         String expiryDate, long SBRNum) {
-    //     super(surname, name, middleName, birthDate, sex, educationalAttainment, yearGraduated, cpNum, email, SSSNum, TINNum,
-    //             SGLicense, expiryDate, SBRNum);
-    //     //TODO Auto-generated constructor stub
-    // }
     public rtc(List<Object> data) {
         super(data);
-        //TODO Auto-generated constructor stub
     }
 
     private static String courseName = "RTC"; //fixed courseName

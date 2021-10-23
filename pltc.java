@@ -2,7 +2,6 @@ import java.util.*;
 public class pltc extends Student {
     public pltc(List<Object> data) {
         super(data);
-        //TODO Auto-generated constructor stub
     }
 
     private static String courseName = "PLTC"; //fixed courseName
