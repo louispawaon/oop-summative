@@ -4,7 +4,9 @@ import java.text.*;
 
 public class Student {
     private int studentNum=0;
+    private String surname;
     private String name;
+    private String middleName;
     private String birthDate;
     private char sex;
     private Period age;
@@ -14,94 +16,36 @@ public class Student {
     private String email;
     private long SSSNum;
     private long TINNum;
-    private String SGLicense;
+    private long SGLicense;
     private String expiryDate; 
     private long SBRNum;
+    private String status;
 
-/*
-    //PLTC
-    Student(int studentNum,
-    String name,
-    String birthDate,
-    char sex,
-    Period age,
-    String educationalAttainment,
-    int yearGraduated,
-    String cpNum,
-    String email)
+    public Student(
+    List<Object> data)
     {
-        this.studentNum=studentNum;
-        this.name = name;
-        this.birthDate=birthDate;
-        this.sex=sex;
-        this.age=age;
-        this.educationalAttainment=educationalAttainment;
-        this.yearGraduated=yearGraduated;
-        this.cpNum=cpNum;
-        this.email=email;
-        
+        this.surname = data.get(0).toString();
+        this.name = data.get(1).toString();
+        this.middleName = data.get(2).toString();
+        this.birthDate = data.get(3).toString();
+        this.sex = data.get(4).toString().charAt(0);
+        this.educationalAttainment = data.get(5).toString();
+        this.yearGraduated = Integer.parseInt(data.get(6).toString());
+        this.cpNum = data.get(7).toString();
+        this.email = data.get(8).toString();
+
+        if (data.size() >  9) {
+            this.SSSNum = Long.valueOf(data.get(9).toString());
+            this.TINNum = Long.valueOf(data.get(10).toString());
+        }
+
+        if (data.size() > 11) {
+            this.SGLicense = Long.valueOf(data.get(11).toString());
+            this.expiryDate =data.get(12).toString();
+            this.SBRNum = Long.valueOf(data.get(13).toString());  
+        }
     }
 
-    //RTC
-    Student(int studentNum,
-    String name,
-    String birthDate,
-    char sex,
-    Period age,
-    String educationalAttainment,
-    int yearGraduated,
-    String cpNum,
-    String email,
-    long SSSNum,
-    long TINNum,
-    String SGLicense,
-    String expiryDate,
-    long SBRNum)
-    {
-        this.studentNum=studentNum;
-        this.name = name;
-        this.birthDate=birthDate;
-        this.sex=sex;
-        this.age=age;
-        this.educationalAttainment=educationalAttainment;
-        this.yearGraduated=yearGraduated;
-        this.cpNum=cpNum;
-        this.email=email;
-        this.SSSNum=SSSNum;
-        this.TINNum=TINNum;
-        this.SGLicense=SGLicense;
-        this.expiryDate=expiryDate;
-        this.SBRNum=SBRNum;  
-    }
-
-    //BSSC
-    Student(int studentNum,
-    String name,
-    String birthDate,
-    char sex,
-    Period age,
-    String educationalAttainment,
-    int yearGraduated,
-    String cpNum,
-    String email,
-    long SSSNum,
-    long TINNum
-    )
-    {
-        this.studentNum=studentNum;
-        this.name = name;
-        this.birthDate=birthDate;
-        this.sex=sex;
-        this.age=age;
-        this.educationalAttainment=educationalAttainment;
-        this.yearGraduated=yearGraduated;
-        this.cpNum=cpNum;
-        this.email=email;
-        this.SSSNum=SSSNum;
-        this.TINNum=TINNum;    
-    }
-
-*/
     public int getStudentNum(){
         return studentNum;
     }
@@ -111,7 +55,15 @@ public class Student {
     }
 
     public String getName(){
-        return name;
+        return this.name;
+    }
+
+    public String getSurname(){
+        return this.surname;
+    }
+
+    public String getMiddleName(){
+        return this.middleName;
     }
 
     public Period getAge(){
@@ -132,43 +84,51 @@ public class Student {
     }
 
     public char getSex(){
-        return sex;
+        return this.sex;
     }
 
     public String getEducationalAttainment(){
-        return educationalAttainment;
+        return this.educationalAttainment;
     }
 
     public int getYearGraduated(){
-        return yearGraduated;
+        return this.yearGraduated;
     }
 
     public String getCPNum(){
-        return cpNum;
+        return this.cpNum;
     }
 
     public String getEmail(){
-        return email;
+        return this.email;
     }
 
     public long getSSSNum(){
-        return SSSNum;
+        return this.SSSNum;
     }
 
     public long getTINNum(){
-        return TINNum;
+        return this.TINNum;
     }
 
-    public String getSGLicense(){
-        return SGLicense;
+    public long getSGLicense(){
+        return this.SGLicense;
     }
 
     public String getExpiryDate(){
-        return expiryDate;
+        return this.expiryDate;
     }
 
     public long getSBRNum(){
-        return SBRNum;
+        return this.SBRNum;
+    }
+
+    public String getStatus(){
+        return status;
+    }
+
+    public void setStatus(String status){
+        this.status=status;
     }
 
 }
