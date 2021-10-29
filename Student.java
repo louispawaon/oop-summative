@@ -3,55 +3,113 @@ import java.time.*;
 import java.text.*;
 
 public class Student {
-    private int studentNum=0;
+
+    // NOT INPUTS
+    private Period age;
+    private String status;
+
+    // ARGUMENTS
+    private int id;
     private String surname;
     private String name;
     private String middleName;
     private String birthDate;
     private char sex;
-    private Period age;
     private String educationalAttainment;
     private int yearGraduated;
     private String cpNum;
     private String email;
-    private long SSSNum;
-    private long TINNum;
-    private long SGLicense;
-    private String expiryDate; 
-    private long SBRNum;
-    private String status;
 
-    public Student(
-    List<Object> data)
-    {
-        this.surname = data.get(0).toString();
-        this.name = data.get(1).toString();
-        this.middleName = data.get(2).toString();
-        this.birthDate = data.get(3).toString();
-        this.sex = data.get(4).toString().charAt(0);
-        this.educationalAttainment = data.get(5).toString();
-        this.yearGraduated = Integer.parseInt(data.get(6).toString());
-        this.cpNum = data.get(7).toString();
-        this.email = data.get(8).toString();
+    public abstract static class DataBuilder<T extends DataBuilder<T>> {
+        private int id;
+        private String surname;
+        private String name;
+        private String middleName;
+        private String birthDate;
+        private char sex;
+        private String educationalAttainment;
+        private int yearGraduated;
+        private String cpNum;
+        private String email;
 
-        if (data.size() >  9) {
-            this.SSSNum = Long.valueOf(data.get(9).toString());
-            this.TINNum = Long.valueOf(data.get(10).toString());
+        public abstract T getThis();
+
+        public DataBuilder() {}
+
+        public T withID(int id) {
+            this.id = id;
+            return getThis();
         }
 
-        if (data.size() > 11) {
-            this.SGLicense = Long.valueOf(data.get(11).toString());
-            this.expiryDate =data.get(12).toString();
-            this.SBRNum = Long.valueOf(data.get(13).toString());  
+        public T withSurname(String surname) {
+            this.surname = surname;
+            return getThis();
         }
+
+        public T withName(String name) {
+            this.name = name;
+            return getThis();
+        }
+
+        public T withMiddleName(String middleName) {
+            this.middleName = middleName;
+            return getThis();
+        }
+
+        public T withBirthdate(String birthDate) {
+            this.birthDate = birthDate;
+            return getThis();
+        }
+
+        public T withSex(char sex) {
+            this.sex = sex;
+            return getThis();
+        }
+
+        public T withEducationalAttainment(String educationalAttainment) {
+            this.educationalAttainment = educationalAttainment;
+            return getThis();
+        }
+
+        public T withYearGraduated(int yearGraduated) {
+            this.yearGraduated = yearGraduated;
+            return getThis();
+        }
+
+        public T withCPNum(String cpNum) {
+            this.cpNum = cpNum;
+            return getThis();
+        }
+
+        public T withEmail(String email) {
+            this.email = email;
+            return getThis();
+        }
+        
+        public Student build() {
+            return new Student(this);
+        }
+    }
+
+    public Student(DataBuilder<?> data) {
+        this.id = data.id;
+        this.surname = data.surname;
+        this.name = data.name;
+        this.middleName = data.middleName;
+        this.birthDate = data.birthDate;
+        this.sex = data.sex;
+        this.educationalAttainment = data.educationalAttainment;
+        this.yearGraduated = data.yearGraduated;
+        this.cpNum = data.cpNum;
+        this.email = data.email;
     }
 
     public int getStudentNum(){
-        return studentNum;
+        return id;
     }
 
     public void setStudentNum(){
-        studentNum+=1; //test 
+        id+=1; //test 
     }
 
     public String getName(){
@@ -103,25 +161,25 @@ public class Student {
         return this.email;
     }
 
-    public long getSSSNum(){
-        return this.SSSNum;
-    }
+    // public long getSSSNum(){
+    //     return this.SSSNum;
+    // }
 
-    public long getTINNum(){
-        return this.TINNum;
-    }
+    // public long getTINNum(){
+    //     return this.TINNum;
+    // }
 
-    public long getSGLicense(){
-        return this.SGLicense;
-    }
+    // public long getSGLicense(){
+    //     return this.SGLicense;
+    // }
 
-    public String getExpiryDate(){
-        return this.expiryDate;
-    }
+    // public String getExpiryDate(){
+    //     return this.expiryDate;
+    // }
 
-    public long getSBRNum(){
-        return this.SBRNum;
-    }
+    // public long getSBRNum(){
+    //     return this.SBRNum;
+    // }
 
     public String getStatus(){
         return status;

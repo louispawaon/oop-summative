@@ -1,8 +1,15 @@
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 /*
     TODO:
+        (By Priority)
+        - bago kay i run sa ang "rm *.class" sa terminal para mawala tanan class files
+        - test bssc, rtc, pltc kay katulugon na ko wala pa nako natarong ug test (hanapa sa todo ang (TEST) na keyword)
+        - Complete functions on courses class kay ang pag pass lang sa data akong gi fix. wala ko kabalo if 
+            kulang ba ang method na naka declare each courses na class
+        - ID implementation
+        - Find Polymorphism kay wala ko kabalo kung naka implement ba ang polymorphism sa bago na code
+        - CRU implementation
+        - Validation
         - Update name variables on Figma
 */
 public class Main {
@@ -44,61 +51,120 @@ public class Main {
         }
     }
     
-    private static void StudentForm(String courseName, int course, List<Object> data) {
-        String birthdate;
+    private static void StudentForm(String courseName, int course) {
+        String surname, name, middleName, birthDate, educationalAttainment, cpNum, email, expiryDate;
         char sex;
         int yearGraduated;
+        long SSSNum, TINNum, SGLicense, SBRNum;
+
         // PROMPT & INPUT GENERAL DATA REQUIREMENTS
         // surname, name, middleName, birthdate, sex, educationalAttainment, yearGraduated, cpNum, email [9 data]
         System.out.println("- - - STUDENT FORM FOR " + courseName + " - - -");
         System.out.println("> Name ");
         System.out.print("Surname: ");
-        data.add(scanner.nextLine());
+        surname = scanner.nextLine();
         System.out.print("\nName: ");
-        data.add(scanner.nextLine());
+        name = scanner.nextLine();
         System.out.print("\nMiddle Name: ");
-        data.add(scanner.nextLine());
+        middleName = scanner.nextLine();
         System.out.print("\n> Birthdate (YYYY-MM-DD): ");
-        birthdate = scanner.nextLine(); // TODO: VERIFY BIRTHDATE
-        data.add(birthdate);
+        birthDate = scanner.nextLine(); // TODO: VERIFY BIRTHDATE
         do {
             System.out.print("\n> Sex (M, F, X (Non-Binary)): ");
             sex = scanner.nextLine().toUpperCase().charAt(0);
         } while (!(sex == 'M' || sex == 'F' || sex == 'X'));
-        data.add(sex);
         System.out.print("\n> Educational Attainment: ");
-        data.add(scanner.nextLine());
+        educationalAttainment = scanner.nextLine();
         System.out.print("\n> Year Graduated: ");
         yearGraduated = scanner.nextInt(); // TODO: VERIFY YEAR GRADUATED
-        data.add(yearGraduated);
         System.out.print("\n> Cellphone Number: ");
         scanner.nextLine();
-        data.add(scanner.nextLine()); // TODO: VERIFY NUMBER
+        cpNum = scanner.nextLine(); // TODO: VERIFY NUMBER
         System.out.print("\n> E-mail Address: ");
-        data.add(scanner.nextLine()); // TODO: VERIFY EMAIL
+        email = scanner.nextLine(); // TODO: VERIFY EMAIL
 
         // ADDITIONAL DATA FOR RTC or BSSC
         if (course == 2) { // RTC
             System.out.print("\n- - - REQUIRED DATA FIELDS FOR " + courseName + " - - -");
             System.out.print("\n> SSS Number: "); // TODO: VERIFY SSS
-            data.add(scanner.nextLong());
+            SSSNum = scanner.nextLong();
             System.out.print("\n> TIN Number: "); // TODO: VERIFY TIN
-            data.add(scanner.nextLong());
+            TINNum = scanner.nextLong();
             System.out.print("\n> SG License Number: "); // TODO: VERIFY SG
-            data.add(scanner.nextLong());
+            SGLicense = scanner.nextLong();
             System.out.print("\n> SG License Expiry Date (YYYY-MM-DD): "); // TODO: VERIFY DATE
             scanner.nextLine();
-            data.add(scanner.nextLine());
+            expiryDate = scanner.nextLine();
             System.out.print("\n> SBR Number: "); // TODO: VERIFY SBR
-            data.add(scanner.nextLong());
+            SBRNum = scanner.nextLong();
+
+            // CREATE RTC OBJECT
+            RTCStudent refresher = new RTCStudent.RTCStudentBuilder()
+            .withSurname(surname)
+            .withName(name)
+            .withMiddleName(middleName)
+            .withBirthdate(birthDate)
+            .withSex(sex)
+            .withEducationalAttainment(educationalAttainment)
+            .withYearGraduated(yearGraduated)
+            .withCPNum(cpNum)
+            .withEmail(email)
+            .withSSSNum(SSSNum)
+            .withTINNum(TINNum)
+            .withSGLicenseAndExpiry(SGLicense, expiryDate)
+            .withSBRNum(SBRNum)
+            .build();
+
+            // TODO: (TEST) REMOVE AFTER
+            System.out.println("Status: " + refresher.getStatus());
+            System.out.println("Surname: " + refresher.getSurname());
+            System.out.println("SBR Number: "+ refresher.getSBRNum());
+            System.out.println("Course: "+ refresher.getCourse());
         }
         else if (course == 3) { // BSSC
             System.out.print("\n- - - REQUIRED DATA FIELDS FOR " + courseName + " - - -");
             System.out.print("\n> SSS Number: "); // TODO: VERIFY SBR
-            data.add(scanner.nextLong());
+            SSSNum = scanner.nextLong();
             System.out.print("\n> TIN Number: "); // TODO: VERIFY SBR
-            data.add(scanner.nextLong());
-            scanner.nextLine();
+            TINNum = scanner.nextLong();
+
+            //CREATE BSSC OBJECT
+            BSSCStudent basic = new BSSCStudent.BSSCStudentBuilder()
+            .withSurname(surname)
+            .withName(name)
+            .withMiddleName(middleName)
+            .withBirthdate(birthDate)
+            .withSex(sex)
+            .withEducationalAttainment(educationalAttainment)
+            .withYearGraduated(yearGraduated)
+            .withCPNum(cpNum)
+            .withEmail(email)
+            .withSSSNum(SSSNum)
+            .withTINNum(TINNum)
+            .build();
+
+            // TODO: (TEST) REMOVE AFTER
+            System.out.println("Status: "+ basic.getStatus());
+            System.out.println("Surname: "+ basic.getSurname());
+            System.out.println("SSS Number: "+ basic.getSSSNum());
+        }
+        else { // PLTC
+            // CREATE PLTC OBJECT
+            PLTCStudent prelicense = new PLTCStudent.PLTCStudentBuilder()
+            .withSurname(surname)
+            .withName(name)
+            .withMiddleName(middleName)
+            .withBirthdate(birthDate)
+            .withSex(sex)
+            .withEducationalAttainment(educationalAttainment)
+            .withYearGraduated(yearGraduated)
+            .withCPNum(cpNum)
+            .withEmail(email)
+            .build();
+
+            // TODO: (TEST) REMOVE AFTER
+            System.out.println("Status: " + prelicense.getStatus());
+            System.out.println("Surname: " + prelicense.getSurname());
         }
     }
 
@@ -112,12 +178,6 @@ public class Main {
 
     private static void AddStudent() {
         int course = -1;
-
-        // I used Object class so I can store different data types into one list
-        List<Object> data = new ArrayList<Object>();
-        
-        
-        
         
         // CHOOSE COURSE PROMPT
         System.out.println("\n- - - COURSES OFFERED - - -" +
@@ -144,40 +204,18 @@ public class Main {
         // SWITCH COURSE DATA REQUIREMENTS
         switch (course) {
             case 1:
-                StudentForm("Pre-Licensing Training Course (PLTC)", course, data);
-                Student prelicense = new pltc(data);
-                System.out.println("Status: "+prelicense.getStatus());
-                System.out.println("Surname: "+prelicense.getSurname());
+                StudentForm("Pre-Licensing Training Course (PLTC)", course);
                 break;
             case 2:
-                StudentForm("Refresher Training Course (RTC)", course, data);
-                Student refresher = new rtc(data);
-                System.out.println("Status: "+refresher.getStatus());
-                System.out.println("Surname: "+refresher.getSurname());
+                StudentForm("Refresher Training Course (RTC)", course);
                 break;
             case 3:
-                StudentForm("Basic Security Supervisory Course (BSSC)", course, data);
-                Student basic = new bssc(data);
-                System.out.println("Status: "+basic.getStatus());
-                System.out.println("Surname: "+basic.getSurname());
+                StudentForm("Basic Security Supervisory Course (BSSC)", course);
                 break;
             case 4:
                 ModePrompt();
                 break;
         }
-
-        // CHECK IF data IS EMPTY
-        if (data.isEmpty() == false) {
-            // new STUDENT and add it to current student list
-            // TODO: student list
-            // TODO: REMOVE DISPLAY
-            System.out.println("Size: " + data.size()); // FOR MY GUIDE ONLY
-            String[] dataVariables = {"surname", "name", "middleName", "birthdate", "sex", "educationalAttainment", "yearGraduated", "cpNum", "email", "sssNum", "tinNum", "sgLicense", "sgLicenseExpiryDate", "sbrNum"};
-            for (int i = 0; i < data.size(); i++) {
-                System.out.println(i + " " + data.get(i).getClass() + " " + dataVariables[i] + ": " + data.get(i));
-            }
-        }
-
     }
 
     public static void main(String[] args) {
