@@ -1,12 +1,11 @@
 import java.util.Scanner;
+
+import javax.lang.model.util.ElementScanner14;
+
+import java.util.Arrays;
 /*
     TODO:
         (By Priority)
-        - bago kay i run sa ang "rm *.class" sa terminal para mawala tanan class files
-        - test bssc, rtc, pltc kay katulugon na ko wala pa nako natarong ug test (hanapa sa todo ang (TEST) na keyword)
-        - Complete functions on courses class kay ang pag pass lang sa data akong gi fix. wala ko kabalo if 
-            kulang ba ang method na naka declare each courses na class
-        - ID implementation
         - Find Polymorphism kay wala ko kabalo kung naka implement ba ang polymorphism sa bago na code
         - CRU implementation
         - Validation
@@ -14,7 +13,9 @@ import java.util.Scanner;
 */
 public class Main {
     private static Scanner scanner = new Scanner(System.in);
-
+    private static final int MAX = 30; // SET MAXIMUM NUMBER OF STUDENTS HERE
+    private static int[] idList = new int[MAX];
+    
     private static void ModePrompt() {
         int mode = 0;
         
@@ -22,7 +23,8 @@ public class Main {
         System.out.println("\n- - - MODES - - -" +
         "\n1 - Check Records" +
         "\n2 - Update Records" +
-        "\n3 - Add Student");
+        "\n3 - Add Student" +
+        "\n4 - [EXIT]");
 
         // INPUT MODE
         do {
@@ -46,16 +48,28 @@ public class Main {
                 UpdateRecords();
                 break;
             case 3:
-                AddStudent();
+                if (idList[idList.length-1] != MAX)
+                    AddStudent();
+                else
+                    System.out.println("\nNO AVAILABLE SLOTS FOR A NEW STUDENT");
                 break;
+            case 4:
+                System.out.println("Thank you for using Security Trainee Information System!");
+                System.exit(0);
         }
+
+        ModePrompt();
     }
     
     private static void StudentForm(String courseName, int course) {
         String surname, name, middleName, birthDate, educationalAttainment, cpNum, email, expiryDate;
         char sex;
-        int yearGraduated;
+        int yearGraduated, id;
         long SSSNum, TINNum, SGLicense, SBRNum;
+
+        // SET ID
+        id = GetStudentID();
+        idList[id-1] = id;
 
         // PROMPT & INPUT GENERAL DATA REQUIREMENTS
         // surname, name, middleName, birthdate, sex, educationalAttainment, yearGraduated, cpNum, email [9 data]
@@ -100,6 +114,7 @@ public class Main {
 
             // CREATE RTC OBJECT
             RTCStudent refresher = new RTCStudent.RTCStudentBuilder()
+            .withID(id)
             .withSurname(surname)
             .withName(name)
             .withMiddleName(middleName)
@@ -116,6 +131,7 @@ public class Main {
             .build();
 
             // TODO: (TEST) REMOVE AFTER
+            System.out.println("ID: " + refresher.getStudentNum());
             System.out.println("Status: " + refresher.getStatus());
             System.out.println("Surname: " + refresher.getSurname());
             System.out.println("SBR Number: "+ refresher.getSBRNum());
@@ -128,8 +144,10 @@ public class Main {
             System.out.print("\n> TIN Number: "); // TODO: VERIFY SBR
             TINNum = scanner.nextLong();
 
+            id = GetStudentID();
             //CREATE BSSC OBJECT
             BSSCStudent basic = new BSSCStudent.BSSCStudentBuilder()
+            .withID(id)
             .withSurname(surname)
             .withName(name)
             .withMiddleName(middleName)
@@ -144,6 +162,7 @@ public class Main {
             .build();
 
             // TODO: (TEST) REMOVE AFTER
+            System.out.println("ID: " + basic.getStudentNum());
             System.out.println("Status: "+ basic.getStatus());
             System.out.println("Surname: "+ basic.getSurname());
             System.out.println("SSS Number: "+ basic.getSSSNum());
@@ -151,6 +170,7 @@ public class Main {
         else { // PLTC
             // CREATE PLTC OBJECT
             PLTCStudent prelicense = new PLTCStudent.PLTCStudentBuilder()
+            .withID(id)
             .withSurname(surname)
             .withName(name)
             .withMiddleName(middleName)
@@ -163,9 +183,14 @@ public class Main {
             .build();
 
             // TODO: (TEST) REMOVE AFTER
+            System.out.println("ID: " + prelicense.getStudentNum());
             System.out.println("Status: " + prelicense.getStatus());
             System.out.println("Surname: " + prelicense.getSurname());
         }
+
+        // TODO: (Test) Remove later
+        for (int i: idList)
+            System.out.print(i + ", ");
     }
 
     private static void CheckRecords() {
@@ -218,6 +243,14 @@ public class Main {
         }
     }
 
+    private static int GetStudentID() {
+        for (int i = 0; i < idList.length; i++) {
+            if (idList[i] == 0) {
+                return i + 1;
+            }
+        }
+        return 30;
+    }
     public static void main(String[] args) {
         // WELCOME MESSAGE
         System.out.println("Welcome to the Security Trainee Information System!");
