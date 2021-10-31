@@ -29,15 +29,15 @@ public class Main {
         // INPUT MODE
         do {
             try {
-                System.out.print("Choose your mode (1-3): ");
+                System.out.print("Choose your mode (1-4): ");
                 mode = scanner.nextInt();
-                if (mode < 1 || mode > 3)
+                if (mode < 1 || mode > 4)
                     System.out.println("\nEnter a valid choice. Try again!");
             }
             catch (Exception e) {
                 mode = -1;
             }
-        } while (mode < 1 || mode > 3);
+        } while (mode < 1 || mode > 4);
 
         // SWITCH MODE
         switch (mode) {
