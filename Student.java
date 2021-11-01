@@ -124,6 +124,10 @@ public class Student {
         return this.middleName;
     }
 
+    public String getBirthdate(){
+        return this.birthDate;
+    }
+
     public Period getAge(){
         return age;
     }
