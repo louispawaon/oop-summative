@@ -4,6 +4,7 @@ public class RTCStudent extends Student implements Courses.RTC {
     private long SGLicense;
     private String expiryDate; 
     private long SBRNum;
+    private String status="Enrolled";
 
     public static class RTCStudentBuilder extends Student.DataBuilder<RTCStudentBuilder> {
         private long SSSNum;
@@ -52,12 +53,6 @@ public class RTCStudent extends Student implements Courses.RTC {
         this.SBRNum = data.SBRNum;
     }
     
-    // private static String[] curriculum; //same rag curriculum sa isa ka course
-    // private LinkedHashMap<String, Integer> schedule = new LinkedHashMap<String, Integer>(); //not final dle ko sure 
-    
-    private String status="Enrolled";
-
-
     public String getCourse(){
         return courseName;
     }
@@ -86,14 +81,6 @@ public class RTCStudent extends Student implements Courses.RTC {
         return SBRNum;
     }
 
-    // public String[] getCurriculum(){
-    //     return curriculum;
-    // }
-
-    // public LinkedHashMap<String, Integer> getSchedule(){
-    //     return schedule;
-    // }
-
     public double getTuition(){
         return tuition;
     }
@@ -106,10 +93,25 @@ public class RTCStudent extends Student implements Courses.RTC {
         return status;
     }
 
+    // SET METHODS
     public void setStatus(String status){
-        this.status=status;
+        this.status = status;
     }
 
+    public void setSSSNum(long SSSNum) {
+        this.SSSNum = SSSNum;
+    }
 
-    
+    public void setTINNum(long TINNum) {
+        this.TINNum = TINNum;
+    }
+
+    public void setSGLicenseAndExpiry(long SGLicense, String expiryDate) {
+        this.SGLicense = SGLicense;
+        this.expiryDate = expiryDate;
+    }
+
+    public void setSBRNum(long SBRNum) {
+        this.SBRNum = SBRNum;
+    }
 }

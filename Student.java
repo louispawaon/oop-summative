@@ -108,10 +108,6 @@ public class Student {
         return id;
     }
 
-    public void setStudentNum(){
-        id+=1; //test 
-    }
-
     public String getName(){
         return this.name;
     }
@@ -145,6 +141,7 @@ public class Student {
         age = Period.between(birthday, today);
     }
 
+    //TODO: CHANGE TO WORDS
     public char getSex(){
         return this.sex;
     }
@@ -165,26 +162,6 @@ public class Student {
         return this.email;
     }
 
-    // public long getSSSNum(){
-    //     return this.SSSNum;
-    // }
-
-    // public long getTINNum(){
-    //     return this.TINNum;
-    // }
-
-    // public long getSGLicense(){
-    //     return this.SGLicense;
-    // }
-
-    // public String getExpiryDate(){
-    //     return this.expiryDate;
-    // }
-
-    // public long getSBRNum(){
-    //     return this.SBRNum;
-    // }
-
     public String getStatus(){
         return status;
     }
@@ -193,4 +170,45 @@ public class Student {
         this.status=status;
     }
 
+    @Override
+    public String toString() {
+        return surname.toUpperCase() + ", " + name.toUpperCase() + " " + middleName.toUpperCase();
+    }
+
+    // SET METHODS
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+
+    public void setName(String name){
+        this.name = name;
+    }
+
+    public void setMiddleName(String middleName) {
+        this.middleName = middleName;
+    }
+
+    public void setBirthdate(String birthDate) {
+        this.birthDate = birthDate;
+    }
+
+    public void setSex(char sex) {
+        this.sex = sex;
+    }
+
+    public void setEducationalAttainment(String educationalAttainment) {
+        this.educationalAttainment = educationalAttainment;
+    }
+
+    public void setYearGraduated(int yearGraduated) {
+        this.yearGraduated = yearGraduated;
+    }
+
+    public void setCPNum(String cpNum) {
+        this.cpNum = cpNum;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 }

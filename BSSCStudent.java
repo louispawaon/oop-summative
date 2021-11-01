@@ -1,6 +1,7 @@
 public class BSSCStudent extends Student implements Courses.BSSC {
     private long SSSNum;
     private long TINNum;
+    private String status="Enrolled";
 
     public static class BSSCStudentBuilder extends Student.DataBuilder<BSSCStudentBuilder> {
         private long SSSNum;
@@ -31,11 +32,6 @@ public class BSSCStudent extends Student implements Courses.BSSC {
         this.SSSNum = data.SSSNum;
         this.TINNum = data.TINNum;
     }
-    
-    // private final String[] curriculum; //same rag curriculum sa isa ka course
-    // private LinkedHashMap<String, Integer> schedule = new LinkedHashMap<String, Integer>(); //not final dle ko sure 
-    
-    private String status="Enrolled";
 
     public String getCourse(){
         return courseName;
@@ -53,14 +49,6 @@ public class BSSCStudent extends Student implements Courses.BSSC {
         return TINNum;
     }
 
-    // public String[] getCurriculum(){
-    //     return curriculum;
-    // }
-    
-    // public LinkedHashMap<String, Integer> getSchedule(){
-    //     return schedule;
-    // }
-
     public double getTuition(){
         return tuition;
     }
@@ -73,8 +61,16 @@ public class BSSCStudent extends Student implements Courses.BSSC {
         return status;
     }
 
+    // SET METHODS
     public void setStatus(String status){
-        this.status=status;
+        this.status = status;
     }
 
+    public void setSSSNum(long SSSNum) {
+        this.SSSNum = SSSNum;
+    }
+
+    public void setTINNum(long TINNum) {
+        this.TINNum = TINNum;
+    }
 }

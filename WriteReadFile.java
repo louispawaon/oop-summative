@@ -1,4 +1,3 @@
-import java.util.*;
 import java.io.*;
 public class WriteReadFile {
     /*TODO:
@@ -14,7 +13,7 @@ public class WriteReadFile {
     //PLTC STUDENT WRITER
     public void writePLTC(PLTCStudent[] pltcClass){
         try {
-            BufferedWriter preLi = new BufferedWriter(new FileWriter("PLTC.csv"));
+            BufferedWriter preLi = new BufferedWriter(new FileWriter("PLTC.csv", false));
             StringBuilder sb = new StringBuilder();
             for(int x=0;x<pltcClass.length;x++){
                 if(pltcClass[x]!=null){
@@ -83,12 +82,20 @@ public class WriteReadFile {
                 .withEmail(email)
                 .build();
 
-            for(int i=0;i<Main.pltcClass.length;i++){
-                if(Main.pltcClass[i]==null){
-                    Main.pltcClass[i]=prelicense;
-                    break;
+                for(int i=0;i<Main.pltcClass.length;i++){
+                    if (Main.pltcClass[i] != null && prelicense.getStudentNum() == Main.pltcClass[i].getStudentNum()) {
+                        Main.pltcClass[i] = prelicense;
+                        break;
+                    }
+                    if(Main.pltcClass[i]==null){
+                        Main.pltcClass[i]=prelicense;
+                        break;
+                    }
                 }
-            }
+
+                // ADD TO idList
+                id = prelicense.getStudentNum();
+                Main.idList[id-1] = id;
             }
             br.close();
         }
@@ -100,7 +107,7 @@ public class WriteReadFile {
     //RTC STUDENT WRITER
     public void writeRTC(RTCStudent[] rtcClass){
         try {
-            BufferedWriter retrain = new BufferedWriter(new FileWriter("RTC.csv"));
+            BufferedWriter retrain = new BufferedWriter(new FileWriter("RTC.csv", false));
             StringBuilder sb = new StringBuilder();
             for(int x=0;x<rtcClass.length;x++){
                 if(rtcClass[x]!=null){
@@ -189,11 +196,19 @@ public class WriteReadFile {
                 .build();
 
                 for(int i=0;i<Main.rtcClass.length;i++){
-                    if(Main.rtcClass[i]==null){
+                    if (Main.rtcClass[i] != null && refresher.getStudentNum() == Main.rtcClass[i].getStudentNum()) {
+                        Main.rtcClass[i] = refresher;
+                        break;
+                    }
+                    else if(Main.rtcClass[i]==null){
                         Main.rtcClass[i]=refresher;
                         break;
                     }
                 }
+
+                // ADD TO idList
+                id = refresher.getStudentNum();
+                Main.idList[id-1] = id;
             }
             br.close();
         }
@@ -205,7 +220,7 @@ public class WriteReadFile {
     //BSSC STUDENT WRITER
     public void writeBSSC(BSSCStudent[] bsscClass){
         try {
-            BufferedWriter retrain = new BufferedWriter(new FileWriter("BSSC.csv"));
+            BufferedWriter retrain = new BufferedWriter(new FileWriter("BSSC.csv", false));
             StringBuilder sb = new StringBuilder();
             for(int x=0;x<bsscClass.length;x++){
                 if(bsscClass[x]!=null){
@@ -282,11 +297,19 @@ public class WriteReadFile {
                 .build();
 
                 for(int i=0;i<Main.bsscClass.length;i++){
-                    if(Main.bsscClass[i]==null){
+                    if (Main.bsscClass[i] != null && basic.getStudentNum() == Main.bsscClass[i].getStudentNum()) {
+                        Main.bsscClass[i] = basic;
+                        break;
+                    }
+                    else if(Main.bsscClass[i]==null){
                         Main.bsscClass[i]=basic;
                         break;
                     }
                 }
+
+                // ADD TO idList
+                id = basic.getStudentNum();
+                Main.idList[id-1] = id;
             }
             br.close();
         }

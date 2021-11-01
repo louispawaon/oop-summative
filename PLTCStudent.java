@@ -1,4 +1,6 @@
 public class PLTCStudent extends Student implements Courses.PLTC {
+    private String status="Enrolled";
+
     public static class PLTCStudentBuilder extends Student.DataBuilder<PLTCStudentBuilder> {
         @Override
         public PLTCStudentBuilder getThis() {
@@ -14,11 +16,6 @@ public class PLTCStudent extends Student implements Courses.PLTC {
         super(data);
     }
 
-    // private static String[] curriculum; //same rag curriculum sa isa ka course
-    // private LinkedHashMap<String, Integer> schedule = new LinkedHashMap<String, Integer>(); //not final dle ko sure 
-    
-    private String status="Enrolled";
-
     public String getCourse(){
         return courseName;
     }
@@ -26,14 +23,6 @@ public class PLTCStudent extends Student implements Courses.PLTC {
     public String getTeacher(){
         return teacher;
     }
-
-    // public String[] getCurriculum(){
-    //     return curriculum;
-    // }
-
-    // public LinkedHashMap<String, Integer> getSchedule(){
-    //     return schedule;
-    // }
 
     public double getTuition(){
         return tuition;
@@ -47,8 +36,8 @@ public class PLTCStudent extends Student implements Courses.PLTC {
         return status;
     }
 
-    public void setStatus(String status){
-        this.status=status;
+    // SET METHODS
+    public void setStatus(String status) {
+        this.status = status;
     }
-
 }
