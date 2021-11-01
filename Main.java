@@ -1,13 +1,10 @@
-import java.util.Scanner;
-
-import javax.lang.model.util.ElementScanner14;
-
-import java.util.Arrays;
+import java.util.*;
+import java.io.*;
 /*
     TODO:
         (By Priority)
-        - Find Polymorphism kay wala ko kabalo kung naka implement ba ang polymorphism sa bago na code
-        - CRU implementation
+        - CRU implementation - Update nalang kulang
+        - Further Testing Needed
         - Validation
         - Update name variables on Figma
 */
@@ -15,7 +12,11 @@ public class Main {
     private static Scanner scanner = new Scanner(System.in);
     private static final int MAX = 30; // SET MAXIMUM NUMBER OF STUDENTS HERE
     private static int[] idList = new int[MAX];
-    
+    public static PLTCStudent[] pltcClass = new PLTCStudent[10];
+    public static RTCStudent[] rtcClass = new RTCStudent[10];
+    public static BSSCStudent[] bsscClass = new BSSCStudent[10];
+    private static WriteReadFile wr = new WriteReadFile();
+
     private static void ModePrompt() {
         int mode = 0;
         
@@ -130,6 +131,13 @@ public class Main {
             .withSBRNum(SBRNum)
             .build();
 
+            for(int i=0;i<rtcClass.length;i++){
+                if(rtcClass[i]==null){
+                    rtcClass[i]=refresher;
+                    break;
+                }
+            }
+
             // TODO: (TEST) REMOVE AFTER
             System.out.println("ID: " + refresher.getStudentNum());
             System.out.println("Status: " + refresher.getStatus());
@@ -161,6 +169,13 @@ public class Main {
             .withTINNum(TINNum)
             .build();
 
+            for(int i=0;i<bsscClass.length;i++){
+                if(bsscClass[i]==null){
+                    bsscClass[i]=basic;
+                    break;
+                }
+            }
+
             // TODO: (TEST) REMOVE AFTER
             System.out.println("ID: " + basic.getStudentNum());
             System.out.println("Status: "+ basic.getStatus());
@@ -182,6 +197,13 @@ public class Main {
             .withEmail(email)
             .build();
 
+            for(int i=0;i<pltcClass.length;i++){
+                if(pltcClass[i]==null){
+                    pltcClass[i]=prelicense;
+                    break;
+                }
+            }
+
             // TODO: (TEST) REMOVE AFTER
             System.out.println("ID: " + prelicense.getStudentNum());
             System.out.println("Status: " + prelicense.getStatus());
@@ -194,7 +216,7 @@ public class Main {
     }
 
     private static void CheckRecords() {
-
+        
     }
 
     private static void UpdateRecords() {
@@ -230,12 +252,15 @@ public class Main {
         switch (course) {
             case 1:
                 StudentForm("Pre-Licensing Training Course (PLTC)", course);
+                wr.writePLTC(pltcClass);
                 break;
             case 2:
                 StudentForm("Refresher Training Course (RTC)", course);
+                wr.writeRTC(rtcClass);
                 break;
             case 3:
                 StudentForm("Basic Security Supervisory Course (BSSC)", course);
+                wr.writeBSSC(bsscClass);
                 break;
             case 4:
                 ModePrompt();
@@ -252,9 +277,15 @@ public class Main {
         return 30;
     }
     public static void main(String[] args) {
+
+        //INITIALIZATION - READING CSV FILES
+        wr.readPLTC();
+        wr.readRTC();
+        wr.readBSSC();
+
         // WELCOME MESSAGE
         System.out.println("Welcome to the Security Trainee Information System!");
-
+        
         // ASK FOR MODE
         ModePrompt();
 
