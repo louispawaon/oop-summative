@@ -488,66 +488,90 @@ public class Main {
     }
 
     private static void UpdateDataField(int dataField, PLTCStudent student) {
+        String status,surname, name, middleName, birthDate, educationalAttainment, cpNum, email;
+        char sex;
+        int yearGraduated;
+
         System.out.println("");
         //TODO: ADD VALIDATION HERE
         switch (dataField) {
             case 1:
-                System.out.print("Update Status: ");
-                String status = scanner.nextLine();
+                do{
+                    System.out.print("Update Status: ");
+                    status = scanner.nextLine();
+                }while(!check.validStatus(status));
                 student.setStatus(status);
                 System.out.println("\nUpdated Status to " + student.getStatus() + ".");
                 break;
             case 2:
-                System.out.print("Update Surname: ");
-                String surname = scanner.nextLine();
+                do{
+                    System.out.print("Update Surname: ");
+                    surname = scanner.nextLine();
+                }while(!check.validSurname(surname));
                 student.setSurname(surname);
                 System.out.println("\nUpdated Surname to " + student.getSurname() + ".");
                 break;
             case 3:
-                System.out.print("Update Name: ");
-                String name = scanner.nextLine();
+                do{
+                    System.out.print("Update Name: ");
+                    name = scanner.nextLine();
+                }while(!check.validName(name));
                 student.setName(name);
                 System.out.println("\nUpdated Name to " + student.getName() + ".");
                 break;
             case 4:
-                System.out.print("Update Middle Name: ");
-                String middleName = scanner.nextLine();
+                do{
+                    System.out.print("Update Middle Name: ");
+                    middleName = scanner.nextLine();
+                }while(!check.validMidName(middleName));
                 student.setMiddleName(middleName);
                 System.out.println("\nUpdated Middle Name to " + student.getMiddleName() + ".");
                 break;
             case 5:
-                System.out.print("Update Birthdate (YYYY-MM-DD): ");
-                String birthDate = scanner.nextLine();
+                do{
+                    System.out.print("Update Birthdate (YYYY-MM-DD): ");
+                    birthDate = scanner.nextLine();
+                }while(!check.validBdate(birthDate));
                 student.setBirthdate(birthDate);
                 System.out.println("\nUpdated Birthdate to " + student.getBirthdate() + ".");
                 break;
             case 6:
-                System.out.print("Update Sex: ");
-                char sex = scanner.nextLine().charAt(0);
+                do{
+                    System.out.print("Update Sex: ");
+                    sex = scanner.nextLine().charAt(0);
+                }while(!check.validSex(sex));
                 student.setSex(sex);
                 System.out.println("\nUpdated Sex to " + student.getSex() + ".");
                 break;
             case 7:
-                System.out.print("Update Educational Attainment: ");
-                String educationalAttainment = scanner.nextLine();
+                do{
+                    System.out.print("Update Educational Attainment: ");
+                    educationalAttainment = scanner.nextLine();
+                }while(!check.validGraduate(educationalAttainment));
                 student.setEducationalAttainment(educationalAttainment);
                 System.out.println("\nUpdated Educational Attainment to " + student.getEducationalAttainment() + ".");
                 break;
             case 8:
-                System.out.print("Update Year Graduated: ");
-                int yearGraduated = Integer.parseInt(scanner.nextLine());
+                do{
+                    System.out.print("Update Year Graduated: ");
+                    yearGraduated = Integer.parseInt(scanner.nextLine());
+                }while(!check.validYearGrad(yearGraduated));
                 student.setYearGraduated(yearGraduated);
                 System.out.println("\nUpdated Year Graduated to " + student.getYearGraduated() + ".");
                 break;
             case 9:
-                System.out.print("Update Cellphone Number: ");
-                String cpNum = scanner.nextLine();
+                do{
+                    System.out.print("Update Cellphone Number: ");
+                    cpNum = scanner.nextLine();
+                }while(!check.validPhone(cpNum));
                 student.setCPNum(cpNum);
                 System.out.println("\nUpdated Cellphone Number to " + student.getCPNum() + ".");
                 break;
             case 10:
-                System.out.print("Update Email Address: ");
-                String email = scanner.nextLine();
+                do{
+                    System.out.print("Update Email Address: ");
+                    email = scanner.nextLine();
+                }while(!check.validEmail(email));
                 student.setEmail(email);
                 System.out.println("\nUpdated Email Address to " + student.getEmail() + ".");
                 break;
@@ -558,90 +582,122 @@ public class Main {
     }
 
     private static void UpdateDataField(int dataField, RTCStudent student) {
+        String status,surname, name, middleName, birthDate, educationalAttainment, cpNum, email, expiryDate;
+        char sex;
+        int yearGraduated;
+        long SSSNum, TINNum, SGLicense, SBRNum;
         System.out.println("");
         //TODO: ADD VALIDATION HERE
         switch (dataField) {
             case 1:
-                System.out.print("Update Status: ");
-                String status = scanner.nextLine();
+                do{
+                    System.out.print("Update Status: ");
+                    status = scanner.nextLine();
+                }while(!check.validStatus(status));
                 student.setStatus(status);
-                System.out.println("\nUpdated Status to " + student.getStatus());
+                System.out.println("\nUpdated Status to " + student.getStatus() + ".");
                 break;
             case 2:
-                System.out.print("Update Surname: ");
-                String surname = scanner.nextLine();
+                do{
+                    System.out.print("Update Surname: ");
+                    surname = scanner.nextLine();
+                }while(!check.validSurname(surname));
                 student.setSurname(surname);
-                System.out.println("\nUpdated Surname to " + student.getSurname());
+                System.out.println("\nUpdated Surname to " + student.getSurname() + ".");
                 break;
             case 3:
-                System.out.print("Update Name: ");
-                String name = scanner.nextLine();
+                do{
+                    System.out.print("Update Name: ");
+                    name = scanner.nextLine();
+                }while(!check.validName(name));
                 student.setName(name);
                 System.out.println("\nUpdated Name to " + student.getName() + ".");
                 break;
             case 4:
-                System.out.print("Update Middle Name: ");
-                String middleName = scanner.nextLine();
+                do{
+                    System.out.print("Update Middle Name: ");
+                    middleName = scanner.nextLine();
+                }while(!check.validMidName(middleName));
                 student.setMiddleName(middleName);
                 System.out.println("\nUpdated Middle Name to " + student.getMiddleName() + ".");
                 break;
             case 5:
-                System.out.print("Update Birthdate (YYYY-MM-DD): ");
-                String birthDate = scanner.nextLine();
+                do{
+                    System.out.print("Update Birthdate (YYYY-MM-DD): ");
+                    birthDate = scanner.nextLine();
+                }while(!check.validBdate(birthDate));
                 student.setBirthdate(birthDate);
                 System.out.println("\nUpdated Birthdate to " + student.getBirthdate() + ".");
                 break;
             case 6:
-                System.out.print("Update Sex: ");
-                char sex = scanner.nextLine().charAt(0);
+                do{
+                    System.out.print("Update Sex: ");
+                    sex = scanner.nextLine().charAt(0);
+                }while(!check.validSex(sex));
                 student.setSex(sex);
                 System.out.println("\nUpdated Sex to " + student.getSex() + ".");
                 break;
             case 7:
-                System.out.print("Update Educational Attainment: ");
-                String educationalAttainment = scanner.nextLine();
+                do{
+                    System.out.print("Update Educational Attainment: ");
+                    educationalAttainment = scanner.nextLine();
+                }while(!check.validGraduate(educationalAttainment));
                 student.setEducationalAttainment(educationalAttainment);
                 System.out.println("\nUpdated Educational Attainment to " + student.getEducationalAttainment() + ".");
                 break;
             case 8:
-                System.out.print("Update Year Graduated: ");
-                int yearGraduated = Integer.parseInt(scanner.nextLine());
+                do{
+                    System.out.print("Update Year Graduated: ");
+                    yearGraduated = Integer.parseInt(scanner.nextLine());
+                }while(!check.validYearGrad(yearGraduated));
                 student.setYearGraduated(yearGraduated);
                 System.out.println("\nUpdated Year Graduated to " + student.getYearGraduated() + ".");
                 break;
             case 9:
-                System.out.print("Update Cellphone Number: ");
-                String cpNum = scanner.nextLine();
+                do{
+                    System.out.print("Update Cellphone Number: ");
+                    cpNum = scanner.nextLine();
+                }while(!check.validPhone(cpNum));
                 student.setCPNum(cpNum);
                 System.out.println("\nUpdated Cellphone Number to " + student.getCPNum() + ".");
                 break;
             case 10:
-                System.out.print("Update Email Address: ");
-                String email = scanner.nextLine();
+                do{
+                    System.out.print("Update Email Address: ");
+                    email = scanner.nextLine();
+                }while(!check.validEmail(email));
                 student.setEmail(email);
                 System.out.println("\nUpdated Email Address to " + student.getEmail() + ".");
                 break;
             case 11:
-                System.out.print("Update SSS Number: ");
-                long SSSNum = Long.parseLong(scanner.nextLine());
+                do{
+                    System.out.print("Update SSS Number: ");
+                    SSSNum = Long.parseLong(scanner.nextLine());
+                }while(!check.validSSS(SSSNum));
                 student.setSSSNum(SSSNum);
                 System.out.println("\nUpdated SSS Number to " + student.getSSSNum() + ".");
                 break;
             case 12:
-                System.out.print("Update TIN Number: ");
-                long TINNum = Long.parseLong(scanner.nextLine());
+                do{
+                    System.out.print("Update TIN Number: ");
+                    TINNum = Long.parseLong(scanner.nextLine());
+                }while(!check.validTIN(TINNum));
                 student.setTINNum(TINNum);
                 System.out.println("\nUpdated TIN Number to " + student.getTINNum() + ".");
                 break;
             case 13:
-                System.out.print("Update Security Guard License Number & Expiry: ");
-                long SGLicense = Long.parseLong(scanner.nextLine());
-                String expiryDate = scanner.nextLine();
+                do{
+                    System.out.print("Update Security Guard License Number & Expiry: ");
+                    SGLicense = Long.parseLong(scanner.nextLine());
+                    expiryDate = scanner.nextLine();
+                }while(!check.validSG(SGLicense)||!check.validExpiry(expiryDate));
                 student.setSGLicenseAndExpiry(SGLicense, expiryDate);
                 System.out.println("\nUpdated Security Guard License Number & Expiry to " + student.getSGLicense() + " & " + student.getExpiryDate() + ".");
             case 14:
-                System.out.print("Update SBR Number: ");
-                long SBRNum = Long.parseLong(scanner.nextLine());
+                do{
+                    System.out.print("Update SBR Number: ");
+                    SBRNum = Long.parseLong(scanner.nextLine());
+                }while(!check.validSBR(SBRNum));
                 student.setSBRNum(SBRNum);
                 System.out.println("\nUpdated SBR Number to " + student.getSBRNum() + ".");
                 break;
@@ -652,78 +708,106 @@ public class Main {
     }
     
     private static void UpdateDataField(int dataField, BSSCStudent student) {
+        String status,surname, name, middleName, birthDate, educationalAttainment, cpNum, email;
+        char sex;
+        int yearGraduated;
+        long SSSNum, TINNum;
         System.out.println("");
         //TODO: ADD VALIDATION HERE
         switch (dataField) {
             case 1:
-                System.out.print("Update Status: ");
-                String status = scanner.nextLine();
+                do{
+                    System.out.print("Update Status: ");
+                    status = scanner.nextLine();
+                }while(!check.validStatus(status));
                 student.setStatus(status);
                 System.out.println("\nUpdated Status to " + student.getStatus() + ".");
                 break;
             case 2:
-                System.out.print("Update Surname: ");
-                String surname = scanner.nextLine();
+                do{
+                    System.out.print("Update Surname: ");
+                    surname = scanner.nextLine();
+                }while(!check.validSurname(surname));
                 student.setSurname(surname);
                 System.out.println("\nUpdated Surname to " + student.getSurname() + ".");
                 break;
             case 3:
-                System.out.print("Update Name: ");
-                String name = scanner.nextLine();
+                do{
+                    System.out.print("Update Name: ");
+                    name = scanner.nextLine();
+                }while(!check.validName(name));
                 student.setName(name);
-                System.out.println("\nUpdated Name to " + student.getName());
+                System.out.println("\nUpdated Name to " + student.getName() + ".");
                 break;
             case 4:
-                System.out.print("Update Middle Name: ");
-                String middleName = scanner.nextLine();
+                do{
+                    System.out.print("Update Middle Name: ");
+                    middleName = scanner.nextLine();
+                }while(!check.validMidName(middleName));
                 student.setMiddleName(middleName);
                 System.out.println("\nUpdated Middle Name to " + student.getMiddleName() + ".");
                 break;
             case 5:
-                System.out.print("Update Birthdate (YYYY-MM-DD): ");
-                String birthDate = scanner.nextLine();
+                do{
+                    System.out.print("Update Birthdate (YYYY-MM-DD): ");
+                    birthDate = scanner.nextLine();
+                }while(!check.validBdate(birthDate));
                 student.setBirthdate(birthDate);
                 System.out.println("\nUpdated Birthdate to " + student.getBirthdate() + ".");
                 break;
             case 6:
-                System.out.print("Update Sex: ");
-                char sex = scanner.nextLine().charAt(0);
+                do{
+                    System.out.print("Update Sex: ");
+                    sex = scanner.nextLine().charAt(0);
+                }while(!check.validSex(sex));
                 student.setSex(sex);
                 System.out.println("\nUpdated Sex to " + student.getSex() + ".");
                 break;
             case 7:
-                System.out.print("Update Educational Attainment: ");
-                String educationalAttainment = scanner.nextLine();
+                do{
+                    System.out.print("Update Educational Attainment: ");
+                    educationalAttainment = scanner.nextLine();
+                }while(!check.validGraduate(educationalAttainment));
                 student.setEducationalAttainment(educationalAttainment);
                 System.out.println("\nUpdated Educational Attainment to " + student.getEducationalAttainment() + ".");
                 break;
             case 8:
-                System.out.print("Update Year Graduated: ");
-                int yearGraduated = Integer.parseInt(scanner.nextLine());
+                do{
+                    System.out.print("Update Year Graduated: ");
+                    yearGraduated = Integer.parseInt(scanner.nextLine());
+                }while(!check.validYearGrad(yearGraduated));
                 student.setYearGraduated(yearGraduated);
                 System.out.println("\nUpdated Year Graduated to " + student.getYearGraduated() + ".");
                 break;
             case 9:
-                System.out.print("Update Cellphone Number: ");
-                String cpNum = scanner.nextLine();
+                do{
+                    System.out.print("Update Cellphone Number: ");
+                    cpNum = scanner.nextLine();
+                }while(!check.validPhone(cpNum));
                 student.setCPNum(cpNum);
                 System.out.println("\nUpdated Cellphone Number to " + student.getCPNum() + ".");
                 break;
             case 10:
-                System.out.print("Update Email Address: ");
-                String email = scanner.nextLine();
+                do{
+                    System.out.print("Update Email Address: ");
+                    email = scanner.nextLine();
+                }while(!check.validEmail(email));
                 student.setEmail(email);
                 System.out.println("\nUpdated Email Address to " + student.getEmail() + ".");
                 break;
             case 11:
-                System.out.print("Update SSS Number: ");
-                long SSSNum = Long.parseLong(scanner.nextLine());
+                do{
+                    System.out.print("Update SSS Number: ");
+                    SSSNum = Long.parseLong(scanner.nextLine());
+                }while(!check.validSSS(SSSNum));
                 student.setSSSNum(SSSNum);
                 System.out.println("\nUpdated SSS Number to " + student.getSSSNum() + ".");
                 break;
             case 12:
-                System.out.print("Update TIN Number: ");
-                long TINNum = Long.parseLong(scanner.nextLine());
+                do{
+                    System.out.print("Update TIN Number: ");
+                    TINNum = Long.parseLong(scanner.nextLine());
+                }while(!check.validTIN(TINNum));
                 student.setTINNum(TINNum);
                 System.out.println("\nUpdated TIN Number to " + student.getTINNum() + ".");
                 break;
@@ -737,8 +821,7 @@ public class Main {
             if (i != null)
                 System.out.print(i.getStudentNum() + ", ");
         }
-
-        
+   
     }
 
     private static void AddStudent() {
@@ -816,23 +899,3 @@ public class Main {
     }
 }
 
-/*Contents sa Security Trainee Information System
-- 3 Courses to Apply (PLTC, RTC, BSSC) 
-    - PLTC (Pre-Licensing Training Course) for aspiring guards 
-    - RTC (Refresher Training Course) for renewing guards
-    - BSSC (Basic Security Supervisory Course) for security officers (Lahi ang Security Guard ug Security Officer)
-- Name
-- Age
-- Gender
-- Highest Educational Attainment
-    - Year of Graduation
-- Contact Number
-- Email Address
-
-IF COURSE CHOICE = RTC OR BSSC:
-    - SSS Number
-    - TIN Number
-    - SG License Number (For RTC Trainees Only)
-        - Expiry Date of SG License Number
-    - SBR Number (For RTC Trainees Only)
-*/
