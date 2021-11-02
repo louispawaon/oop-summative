@@ -5,7 +5,7 @@ public class WriteReadFile {
     */
 
     //VARIABLE DECLARATION
-    private String surname, name, middleName, birthDate, educationalAttainment, cpNum, email, expiryDate;
+    private String surname, name, middleName, birthDate, educationalAttainment, cpNum, email, expiryDate,status;
     private char sex;
     private int yearGraduated, id;
     private long SSSNum, TINNum, SGLicense, SBRNum;
@@ -36,6 +36,8 @@ public class WriteReadFile {
                     sb.append(pltcClass[x].getCPNum());
                     sb.append(",");
                     sb.append(pltcClass[x].getEmail());
+                    sb.append(",");
+                    sb.append(pltcClass[x].getStatus());
                     sb.append("\n");
                 }
                 
@@ -67,6 +69,8 @@ public class WriteReadFile {
                 yearGraduated = Integer.parseInt(fromfile[7]);
                 cpNum = fromfile[8];
                 email = fromfile[9];
+                status = fromfile[10];
+                
 
                 //BUILDER TIME
                 PLTCStudent prelicense = new PLTCStudent.PLTCStudentBuilder()
@@ -80,6 +84,7 @@ public class WriteReadFile {
                 .withYearGraduated(yearGraduated)
                 .withCPNum(cpNum)
                 .withEmail(email)
+                .withStatus(status)
                 .build();
 
                 for(int i=0;i<Main.pltcClass.length;i++){
@@ -140,6 +145,8 @@ public class WriteReadFile {
                     sb.append(rtcClass[x].getExpiryDate());
                     sb.append(",");
                     sb.append(rtcClass[x].getSBRNum());
+                    sb.append(",");
+                    sb.append(rtcClass[x].getStatus());
                     sb.append("\n");
                 }
                 
@@ -176,6 +183,7 @@ public class WriteReadFile {
                 SGLicense = Long.parseLong(fromfile[12]);
                 expiryDate = fromfile[13];
                 SBRNum = Long.parseLong(fromfile[14]);
+                status = fromfile[15];
 
                 //BUILDER TIME
                 RTCStudent refresher = new RTCStudent.RTCStudentBuilder()
@@ -193,6 +201,7 @@ public class WriteReadFile {
                 .withTINNum(TINNum)
                 .withSGLicenseAndExpiry(SGLicense, expiryDate)
                 .withSBRNum(SBRNum)
+                .withStatus(status)
                 .build();
 
                 for(int i=0;i<Main.rtcClass.length;i++){
@@ -247,6 +256,8 @@ public class WriteReadFile {
                     sb.append(bsscClass[x].getSSSNum());
                     sb.append(",");
                     sb.append(bsscClass[x].getTINNum());
+                    sb.append(",");
+                    sb.append(bsscClass[x].getStatus());
                     sb.append("\n");
                 }  
             }
@@ -279,6 +290,7 @@ public class WriteReadFile {
                 email = fromfile[9];
                 SSSNum = Long.parseLong(fromfile[10]);
                 TINNum = Long.parseLong(fromfile[11]);
+                status = fromfile[12];
 
                 //BUILDER TIME
                 BSSCStudent basic = new BSSCStudent.BSSCStudentBuilder()
@@ -294,6 +306,7 @@ public class WriteReadFile {
                 .withEmail(email)
                 .withSSSNum(SSSNum)
                 .withTINNum(TINNum)
+                .withStatus(status)
                 .build();
 
                 for(int i=0;i<Main.bsscClass.length;i++){
