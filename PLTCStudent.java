@@ -1,7 +1,8 @@
 public class PLTCStudent extends Student implements Courses.PLTC {
     private String status="Enrolled";
-
     public static class PLTCStudentBuilder extends Student.DataBuilder<PLTCStudentBuilder> {
+        private String status="Enrolled";
+        
         @Override
         public PLTCStudentBuilder getThis() {
             return this;
@@ -10,10 +11,16 @@ public class PLTCStudent extends Student implements Courses.PLTC {
         public PLTCStudent build() {
             return new PLTCStudent(this);
         }
+
+        public PLTCStudentBuilder withStatus(String status){
+            this.status=status;
+            return this;
+        }
     }
 
     private PLTCStudent(PLTCStudentBuilder data) {
         super(data);
+        this.status = data.status;
     }
 
     public String getCourse(){

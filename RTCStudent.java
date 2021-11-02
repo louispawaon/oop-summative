@@ -12,6 +12,7 @@ public class RTCStudent extends Student implements Courses.RTC {
         private long SGLicense;
         private String expiryDate; 
         private long SBRNum;
+        private String status="Enrolled";
 
         @Override
         public RTCStudentBuilder getThis() {
@@ -39,6 +40,11 @@ public class RTCStudent extends Student implements Courses.RTC {
             return this;
         }
 
+        public RTCStudentBuilder withStatus(String status){
+            this.status=status;
+            return this;
+        }
+
         public RTCStudent build() {
             return new RTCStudent(this);
         }
@@ -51,6 +57,7 @@ public class RTCStudent extends Student implements Courses.RTC {
         this.SGLicense = data.SGLicense;
         this.expiryDate = data.expiryDate;
         this.SBRNum = data.SBRNum;
+        this.status = data.status;
     }
     
     public String getCourse(){

@@ -6,6 +6,7 @@ public class BSSCStudent extends Student implements Courses.BSSC {
     public static class BSSCStudentBuilder extends Student.DataBuilder<BSSCStudentBuilder> {
         private long SSSNum;
         private long TINNum;
+        private String status="Enrolled";
 
         @Override
         public BSSCStudentBuilder getThis() {
@@ -22,6 +23,11 @@ public class BSSCStudent extends Student implements Courses.BSSC {
             return this;
         }
 
+        public BSSCStudentBuilder withStatus(String status){
+            this.status=status;
+            return this;
+        }
+
         public BSSCStudent build() {
             return new BSSCStudent(this);
         }
@@ -31,6 +37,7 @@ public class BSSCStudent extends Student implements Courses.BSSC {
         super(data);
         this.SSSNum = data.SSSNum;
         this.TINNum = data.TINNum;
+        this.status = data.status;
     }
 
     public String getCourse(){
