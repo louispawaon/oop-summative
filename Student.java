@@ -1,11 +1,12 @@
 import java.util.*;
 import java.time.*;
-import java.text.*;
+import java.time.format.*;
+
 
 public class Student {
 
     // NOT INPUTS
-    private Period age;
+    private int age;
     private String status;
 
     // ARGUMENTS
@@ -19,6 +20,8 @@ public class Student {
     private int yearGraduated;
     private String cpNum;
     private String email;
+
+    //private static String tempBday = birthDate; 
 
     public abstract static class DataBuilder<T extends DataBuilder<T>> {
         private int id;
@@ -124,21 +127,17 @@ public class Student {
         return this.birthDate;
     }
 
-    public Period getAge(){
-        return age;
-    }
-
-    public void setAge()throws ParseException{ //test 
+    /*TODO:
+        - Optimize getAge() kay wala nako nag set age bcos wtf it doesnt work - optional ra tho
+    */
+    
+    public int getAge(){
         LocalDate today = LocalDate.now();
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
-        Date date = format.parse(birthDate);
-        Calendar cal = Calendar.getInstance();
-        cal.setTime(date);
-        int year=cal.get(Calendar.YEAR);
-        int month=cal.get(Calendar.MONTH)+1;
-        int day=cal.get(Calendar.DATE);
-        LocalDate birthday = LocalDate.of(year,month,day);
-        age = Period.between(birthday, today);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        formatter = formatter.withLocale(Locale.ENGLISH);  
+        LocalDate birthday = LocalDate.parse(birthDate, formatter);
+        age = Period.between(birthday, today).getYears();
+        return age;
     }
 
     //TODO: CHANGE TO WORDS
