@@ -43,7 +43,7 @@ public class Validation {
     }
 
     public boolean validGraduate(String educationalAttainment){
-        if(!(educationalAttainment=="College"||educationalAttainment=="High School")){
+        if(!(educationalAttainment.equals("College")||educationalAttainment.equals("High School"))){
             return false;
         }
         return true;
@@ -100,6 +100,13 @@ public class Validation {
 
     public boolean validSBR(long SBRNum){
         if(!(String.valueOf(SBRNum).length()==12)){
+            return false;
+        }
+        return true;
+    }
+
+    public boolean validStatus(String status){
+        if(!(status.equals("Enrolled")||status.equals("Graduated")||status.equals("Dropped"))){
             return false;
         }
         return true;
