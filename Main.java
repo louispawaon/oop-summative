@@ -15,6 +15,7 @@ public class Main {
     public static RTCStudent[] rtcClass = new RTCStudent[10];
     public static BSSCStudent[] bsscClass = new BSSCStudent[10];
     private static WriteReadFile wr = new WriteReadFile();
+    private static Validation check = new Validation();
     private static int currentCourse, currentIndex; // KEYS
 
     private static void ModePrompt() {
@@ -85,42 +86,68 @@ public class Main {
         // surname, name, middleName, birthdate, sex, educationalAttainment, yearGraduated, cpNum, email [9 data]
         System.out.println("- - - STUDENT FORM FOR " + courseName + " - - -");
         System.out.println("> Name ");
-        System.out.print("Surname: ");
-        surname = scanner.nextLine();
-        System.out.print("\nName: ");
-        name = scanner.nextLine();
-        System.out.print("\nMiddle Name: ");
-        middleName = scanner.nextLine();
-        System.out.print("\n> Birthdate (YYYY-MM-DD): ");
-        birthDate = scanner.nextLine(); // TODO: VERIFY BIRTHDATE
+        do{
+            System.out.print("Surname: ");
+            surname = scanner.nextLine();
+        }while(!check.validSurname(surname));
+        do{
+            System.out.print("\nName: ");
+            name = scanner.nextLine();
+        }while(!check.validName(name));
+        do{
+            System.out.print("\nMiddle Name: ");
+            middleName = scanner.nextLine();
+        }while(!check.validMidName(middleName));
+        do{
+            System.out.print("\n> Birthdate (YYYY-MM-DD): ");
+            birthDate = scanner.nextLine();
+        }while(!check.validBdate(birthDate)); // TODO: VERIFY BIRTHDATE
         do {
             System.out.print("\n> Sex (M, F, X (Non-Binary)): ");
             sex = scanner.nextLine().toUpperCase().charAt(0);
-        } while (!(sex == 'M' || sex == 'F' || sex == 'X'));
-        System.out.print("\n> Educational Attainment: ");
-        educationalAttainment = scanner.nextLine();
-        System.out.print("\n> Year Graduated: ");
-        yearGraduated = scanner.nextInt(); // TODO: VERIFY YEAR GRADUATED
-        System.out.print("\n> Cellphone Number: ");
-        scanner.nextLine();
-        cpNum = scanner.nextLine(); // TODO: VERIFY NUMBER
-        System.out.print("\n> E-mail Address: ");
-        email = scanner.nextLine(); // TODO: VERIFY EMAIL
+        } while (!check.validSex(sex));
+        do{
+            System.out.print("\n> Educational Attainment: ");
+            educationalAttainment = scanner.nextLine();
+        } while(!check.validGraduate(educationalAttainment));
+        do{
+            System.out.print("\n> Year Graduated: ");
+            yearGraduated = scanner.nextInt();
+        }while(!check.validYearGrad(yearGraduated)); // TODO: VERIFY YEAR GRADUATED
+        do{
+            System.out.print("\n> Cellphone Number: ");
+            scanner.nextLine();
+            cpNum = scanner.nextLine();
+        }while(!check.validPhone(cpNum)); // TODO: VERIFY NUMBER
+        do{
+            System.out.print("\n> E-mail Address: ");
+            email = scanner.nextLine(); 
+        }while(!check.validEmail(email));// TODO: VERIFY EMAIL
 
         // ADDITIONAL DATA FOR RTC or BSSC
         if (course == 2) { // RTC
             System.out.print("\n- - - REQUIRED DATA FIELDS FOR " + courseName + " - - -");
-            System.out.print("\n> SSS Number: "); // TODO: VERIFY SSS
-            SSSNum = scanner.nextLong();
-            System.out.print("\n> TIN Number: "); // TODO: VERIFY TIN
-            TINNum = scanner.nextLong();
-            System.out.print("\n> SG License Number: "); // TODO: VERIFY SG
-            SGLicense = scanner.nextLong();
-            System.out.print("\n> SG License Expiry Date (YYYY-MM-DD): "); // TODO: VERIFY DATE
-            scanner.nextLine();
-            expiryDate = scanner.nextLine();
-            System.out.print("\n> SBR Number: "); // TODO: VERIFY SBR
-            SBRNum = scanner.nextLong();
+            do{
+                System.out.print("\n> SSS Number: "); // TODO: VERIFY SSS
+                SSSNum = scanner.nextLong();
+            }while(!check.validSSS(SSSNum));
+            do{
+                System.out.print("\n> TIN Number: "); // TODO: VERIFY TIN
+                TINNum = scanner.nextLong();
+            }while(!check.validTIN(TINNum));
+            do{
+                System.out.print("\n> SG License Number: "); // TODO: VERIFY SG
+                SGLicense = scanner.nextLong();
+            }while(!check.validSG(SGLicense));
+            do{ 
+                System.out.print("\n> SG License Expiry Date (YYYY-MM-DD): "); // TODO: VERIFY DATE
+                scanner.nextLine();
+                expiryDate = scanner.nextLine();
+            }while(!check.validExpiry(expiryDate));
+            do{
+                System.out.print("\n> SBR Number: "); // TODO: VERIFY SBR
+                SBRNum = scanner.nextLong();
+            }while(!check.validSBR(SBRNum));
 
             // CREATE RTC OBJECT
             RTCStudent refresher = new RTCStudent.RTCStudentBuilder()
@@ -156,10 +183,14 @@ public class Main {
         }
         else if (course == 3) { // BSSC
             System.out.print("\n- - - REQUIRED DATA FIELDS FOR " + courseName + " - - -");
-            System.out.print("\n> SSS Number: "); // TODO: VERIFY SBR
-            SSSNum = scanner.nextLong();
-            System.out.print("\n> TIN Number: "); // TODO: VERIFY SBR
-            TINNum = scanner.nextLong();
+            do{
+                System.out.print("\n> SSS Number: "); // TODO: VERIFY SSS
+                SSSNum = scanner.nextLong();
+            }while(!check.validSSS(SSSNum));
+            do{
+                System.out.print("\n> TIN Number: "); // TODO: VERIFY TIN
+                TINNum = scanner.nextLong();
+            }while(!check.validTIN(TINNum));
 
             //CREATE BSSC OBJECT
             BSSCStudent basic = new BSSCStudent.BSSCStudentBuilder()
@@ -216,6 +247,7 @@ public class Main {
             System.out.println("ID: " + prelicense.getStudentNum());
             System.out.println("Status: " + prelicense.getStatus());
             System.out.println("Surname: " + prelicense.getSurname());
+            System.out.println("Age: " + prelicense.getAge());
         }
 
         // TODO: (Test) Remove later
