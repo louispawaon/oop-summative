@@ -1,8 +1,10 @@
 import java.util.*;
+
 public class Validation {
 
     private final String fullnamePattern = "^[\\p{L} .'-]+$";
-    private final String yearPattern = "\\d{4}-\\d{2}-\\d{2}";
+    private final String yearPattern =  "\\d{4}\\-(0?[1-9]|1[012])\\-(0?[1-9]|[12][0-9]|3[01])*";
+    private final String leapYrPattern = "^(?:\\d{4}-(?:(?:(?:(?:0[13578]|1[02])-(?:0[1-9]|[1-2][0-9]|3[01]))|(?:(?:0[469]|11)\\/(?:0[1-9]|[1-2][0-9]|30))|(?:02-(?:0[1-9]|1[0-9]|2[0-8]))))|(?:(?:\\d{2}(?:0[48]|[2468][048]|[13579][26]))|(?:(?:[02468][048])|[13579][26])00)-02-29)$";
     private final String cpPattern = "^(09|\\+639)\\d{9}$";
     private final String emailPattern = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$";
     int currentYr = Calendar.getInstance().get(Calendar.YEAR);
@@ -30,6 +32,13 @@ public class Validation {
 
     public boolean validBdate(String birthDate){
         if(!birthDate.matches(yearPattern)){
+            return false;   
+        }
+        return true;
+    }
+
+    public boolean validLeap(String birthDate){
+        if(!birthDate.matches(leapYrPattern)){
             return false;
         }
         return true;
