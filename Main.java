@@ -2,6 +2,7 @@ import java.util.*;
 /*
     TODO:
         (By Priority)
+        - leapYear implementation of possible
         - FURTHER TESTING bc i did not test it well sa update
         - Update name variables on Figma
 */
@@ -99,7 +100,7 @@ public class Main {
         do{
             System.out.print("\n> Birthdate (YYYY-MM-DD): ");
             birthDate = scanner.nextLine();
-        }while(!check.validBdate(birthDate)); // TODO: VERIFY BIRTHDATE
+        }while(!(check.validBdate(birthDate)&&check.validLeap(birthDate))); // TODO: VERIFY BIRTHDATE
         do {
             System.out.print("\n> Sex (M, F, X (Non-Binary)): ");
             sex = scanner.nextLine().toUpperCase().charAt(0);
@@ -141,7 +142,7 @@ public class Main {
                 System.out.print("\n> SG License Expiry Date (YYYY-MM-DD): "); // TODO: VERIFY DATE
                 scanner.nextLine();
                 expiryDate = scanner.nextLine();
-            }while(!check.validExpiry(expiryDate));
+            }while(!(check.validExpiry(expiryDate)&&check.validLeap(expiryDate)));
             do{
                 System.out.print("\n> SBR Number: "); // TODO: VERIFY SBR
                 SBRNum = scanner.nextLong();
@@ -529,7 +530,7 @@ public class Main {
                 do{
                     System.out.print("Update Birthdate (YYYY-MM-DD): ");
                     birthDate = scanner.nextLine();
-                }while(!check.validBdate(birthDate));
+                }while(!(check.validBdate(birthDate)&&check.validLeap(birthDate)));
                 student.setBirthdate(birthDate);
                 System.out.println("\nUpdated Birthdate to " + student.getBirthdate() + ".");
                 break;
@@ -623,7 +624,7 @@ public class Main {
                 do{
                     System.out.print("Update Birthdate (YYYY-MM-DD): ");
                     birthDate = scanner.nextLine();
-                }while(!check.validBdate(birthDate));
+                }while(!(check.validBdate(birthDate)&&check.validLeap(birthDate)));
                 student.setBirthdate(birthDate);
                 System.out.println("\nUpdated Birthdate to " + student.getBirthdate() + ".");
                 break;
@@ -688,7 +689,7 @@ public class Main {
                     System.out.print("Update Security Guard License Number & Expiry: ");
                     SGLicense = Long.parseLong(scanner.nextLine());
                     expiryDate = scanner.nextLine();
-                }while(!check.validSG(SGLicense)||!check.validExpiry(expiryDate));
+                }while(!check.validSG(SGLicense)||(!(check.validExpiry(expiryDate)&&check.validLeap(expiryDate))));
                 student.setSGLicenseAndExpiry(SGLicense, expiryDate);
                 System.out.println("\nUpdated Security Guard License Number & Expiry to " + student.getSGLicense() + " & " + student.getExpiryDate() + ".");
             case 14:
@@ -749,7 +750,7 @@ public class Main {
                 do{
                     System.out.print("Update Birthdate (YYYY-MM-DD): ");
                     birthDate = scanner.nextLine();
-                }while(!check.validBdate(birthDate));
+                }while(!(check.validBdate(birthDate)&&check.validLeap(birthDate)));
                 student.setBirthdate(birthDate);
                 System.out.println("\nUpdated Birthdate to " + student.getBirthdate() + ".");
                 break;
