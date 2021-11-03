@@ -2,9 +2,7 @@ import java.util.*;
 /*
     TODO:
         (By Priority)
-        - Age not working
         - FURTHER TESTING bc i did not test it well sa update
-        - Validation
         - Update name variables on Figma
 */
 public class Main {
