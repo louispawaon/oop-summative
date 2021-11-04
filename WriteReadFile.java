@@ -1,9 +1,6 @@
 import java.io.*;
 public class WriteReadFile {
-    /*TODO:
-        - Further Testing for the three classes   
-    */
-
+    
     //VARIABLE DECLARATION
     private String surname, name, middleName, birthDate, educationalAttainment, cpNum, email, expiryDate,status;
     private char sex;
