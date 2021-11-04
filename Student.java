@@ -127,10 +127,6 @@ public class Student {
         return this.birthDate;
     }
 
-    /*TODO:
-        - Optimize getAge() kay wala nako nag set age bcos wtf it doesnt work - optional ra tho
-    */
-    
     public int getAge(){
         LocalDate today = LocalDate.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
@@ -140,7 +136,6 @@ public class Student {
         return age;
     }
 
-    //TODO: CHANGE TO WORDS
     public char getSex(){
         return this.sex;
     }
@@ -162,7 +157,7 @@ public class Student {
     }
 
     public String getStatus(){
-        return status;
+        return status; 
     }
 
     public void setStatus(String status){
