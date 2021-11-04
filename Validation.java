@@ -1,10 +1,10 @@
 import java.util.*;
+import java.time.*;
+import java.text.*;
 
 public class Validation {
 
     private final String fullnamePattern = "^[\\p{L} .'-]+$";
-    private final String yearPattern =  "\\d{4}\\-(0?[1-9]|1[012])\\-(0?[1-9]|[12][0-9]|3[01])*";
-    private final String leapYrPattern = "^(?:\\d{4}-(?:(?:(?:(?:0[13578]|1[02])-(?:0[1-9]|[1-2][0-9]|3[01]))|(?:(?:0[469]|11)\\/(?:0[1-9]|[1-2][0-9]|30))|(?:02-(?:0[1-9]|1[0-9]|2[0-8]))))|(?:(?:\\d{2}(?:0[48]|[2468][048]|[13579][26]))|(?:(?:[02468][048])|[13579][26])00)-02-29)$";
     private final String cpPattern = "^(09|\\+639)\\d{9}$";
     private final String emailPattern = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$";
     int currentYr = Calendar.getInstance().get(Calendar.YEAR);
@@ -31,17 +31,26 @@ public class Validation {
     }
 
     public boolean validBdate(String birthDate){
-        if(!birthDate.matches(yearPattern)){
-            return false;   
-        }
-        return true;
-    }
+        DateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        sdf.setLenient(false);
 
-    public boolean validLeap(String birthDate){
-        if(!birthDate.matches(leapYrPattern)){
-            return false;
+        try {
+          sdf.parse(birthDate);
+
+          int currentYear = Year.now().getValue();
+          String str[] = birthDate.split("-");
+          int year = Integer.parseInt(str[0]);
+
+          if(year > currentYear || year < currentYear-100){
+            return false; 
+          }
+
+        } catch (NumberFormatException | ParseException ex){
+          return false; 
         }
+
         return true;
+     
     }
 
     public boolean validSex(char sex){
@@ -101,9 +110,24 @@ public class Validation {
     }
 
     public boolean validExpiry(String expiryDate){ 
-        if(!expiryDate.matches(yearPattern)){
-            return false;
+        DateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        sdf.setLenient(false);
+
+        try {
+          sdf.parse(expiryDate);
+
+          int currentYear = Year.now().getValue();
+          String str[] = expiryDate.split("-");
+          int year = Integer.parseInt(str[0]);
+
+          if(year > currentYear || year < currentYear-100){
+            return false; 
+          }
+
+        } catch (NumberFormatException | ParseException ex){
+          return false;
         }
+
         return true;
     }
 

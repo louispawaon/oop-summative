@@ -1,11 +1,5 @@
 import java.util.*;
-/*
-    TODO:
-        (By Priority)
-        - leapYear implementation of possible
-        - FURTHER TESTING bc i did not test it well sa update
-        - Update name variables on Figma
-*/
+
 public class Main {
     private static Scanner scanner = new Scanner(System.in);
     private static final int MAX = 30; // SET MAXIMUM NUMBER OF STUDENTS HERE
@@ -46,14 +40,14 @@ public class Main {
             case 1:
                 DisplayStudents();
                 System.out.print("\n> CHECK Student Records\nEnter ID: ");
-                id = scanner.nextInt(); // TODO: VALIDATION
+                id = scanner.nextInt(); 
                 scanner.nextLine();
                 CheckRecords(id);
                 break;
             case 2:
                 DisplayStudents();
                 System.out.print("\n> UPDATE Student Records\nEnter ID: ");
-                id = scanner.nextInt(); // TODO: VALIDATION
+                id = scanner.nextInt(); 
                 scanner.nextLine();
                 UpdateRecords(id);
                 break;
@@ -82,7 +76,7 @@ public class Main {
         idList[id-1] = id;
 
         // PROMPT & INPUT GENERAL DATA REQUIREMENTS
-        // surname, name, middleName, birthdate, sex, educationalAttainment, yearGraduated, cpNum, email [9 data]
+  
         System.out.println("- - - STUDENT FORM FOR " + courseName + " - - -");
         System.out.println("> Name ");
         do{
@@ -100,7 +94,7 @@ public class Main {
         do{
             System.out.print("\n> Birthdate (YYYY-MM-DD): ");
             birthDate = scanner.nextLine();
-        }while(!(check.validBdate(birthDate)&&check.validLeap(birthDate))); // TODO: VERIFY BIRTHDATE
+        }while(!(check.validBdate(birthDate)));
         do {
             System.out.print("\n> Sex (M, F, X (Non-Binary)): ");
             sex = scanner.nextLine().toUpperCase().charAt(0);
@@ -112,40 +106,41 @@ public class Main {
         do{
             System.out.print("\n> Year Graduated: ");
             yearGraduated = scanner.nextInt();
-        }while(!check.validYearGrad(yearGraduated)); // TODO: VERIFY YEAR GRADUATED
+        }while(!check.validYearGrad(yearGraduated)); 
         do{
             System.out.print("\n> Cellphone Number: ");
             scanner.nextLine();
             cpNum = scanner.nextLine();
-        }while(!check.validPhone(cpNum)); // TODO: VERIFY NUMBER
+        }while(!check.validPhone(cpNum));
         do{
             System.out.print("\n> E-mail Address: ");
             email = scanner.nextLine(); 
-        }while(!check.validEmail(email));// TODO: VERIFY EMAIL
+        }while(!check.validEmail(email));
 
         // ADDITIONAL DATA FOR RTC or BSSC
         if (course == 2) { // RTC
             System.out.print("\n- - - REQUIRED DATA FIELDS FOR " + courseName + " - - -");
             do{
-                System.out.print("\n> SSS Number: "); // TODO: VERIFY SSS
+                System.out.print("\n> SSS Number: "); 
                 SSSNum = scanner.nextLong();
             }while(!check.validSSS(SSSNum));
             do{
-                System.out.print("\n> TIN Number: "); // TODO: VERIFY TIN
+                System.out.print("\n> TIN Number: "); 
                 TINNum = scanner.nextLong();
             }while(!check.validTIN(TINNum));
             do{
-                System.out.print("\n> SG License Number: "); // TODO: VERIFY SG
+                System.out.print("\n> SG License Number: "); 
                 SGLicense = scanner.nextLong();
             }while(!check.validSG(SGLicense));
             do{ 
-                System.out.print("\n> SG License Expiry Date (YYYY-MM-DD): "); // TODO: VERIFY DATE
+                System.out.print("\n> SG License Expiry Date (YYYY-MM-DD): "); 
                 scanner.nextLine();
                 expiryDate = scanner.nextLine();
-            }while(!(check.validExpiry(expiryDate)&&check.validLeap(expiryDate)));
+            }while(!(check.validExpiry(expiryDate)));
             do{
-                System.out.print("\n> SBR Number: "); // TODO: VERIFY SBR
+                System.out.print("\n> SBR Number: "); 
                 SBRNum = scanner.nextLong();
+                scanner.nextLine();
             }while(!check.validSBR(SBRNum));
 
             // CREATE RTC OBJECT
@@ -172,23 +167,18 @@ public class Main {
                     break;
                 }
             }
-
-            // TODO: (TEST) REMOVE AFTER
-            System.out.println("ID: " + refresher.getStudentNum());
-            System.out.println("Status: " + refresher.getStatus());
-            System.out.println("Surname: " + refresher.getSurname());
-            System.out.println("SBR Number: "+ refresher.getSBRNum());
-            System.out.println("Course: "+ refresher.getCourse());
         }
         else if (course == 3) { // BSSC
             System.out.print("\n- - - REQUIRED DATA FIELDS FOR " + courseName + " - - -");
             do{
-                System.out.print("\n> SSS Number: "); // TODO: VERIFY SSS
+                System.out.print("\n> SSS Number: ");
                 SSSNum = scanner.nextLong();
+                scanner.nextLine();
             }while(!check.validSSS(SSSNum));
             do{
-                System.out.print("\n> TIN Number: "); // TODO: VERIFY TIN
+                System.out.print("\n> TIN Number: "); 
                 TINNum = scanner.nextLong();
+                scanner.nextLine();
             }while(!check.validTIN(TINNum));
 
             //CREATE BSSC OBJECT
@@ -214,11 +204,6 @@ public class Main {
                 }
             }
 
-            // TODO: (TEST) REMOVE AFTER
-            System.out.println("ID: " + basic.getStudentNum());
-            System.out.println("Status: "+ basic.getStatus());
-            System.out.println("Surname: "+ basic.getSurname());
-            System.out.println("SSS Number: "+ basic.getSSSNum());
         }
         else { // PLTC
             // CREATE PLTC OBJECT
@@ -242,16 +227,7 @@ public class Main {
                 }
             }
 
-            // TODO: (TEST) REMOVE AFTER
-            System.out.println("ID: " + prelicense.getStudentNum());
-            System.out.println("Status: " + prelicense.getStatus());
-            System.out.println("Surname: " + prelicense.getSurname());
-            System.out.println("Age: " + prelicense.getAge());
         }
-
-        // TODO: (Test) Remove later
-        for (int i: idList)
-            System.out.print(i + ", ");
     }
 
     private static void DisplayStudents() {
@@ -492,7 +468,7 @@ public class Main {
         int yearGraduated;
 
         System.out.println("");
-        //TODO: ADD VALIDATION HERE
+
         switch (dataField) {
             case 1:
                 do{
@@ -530,7 +506,7 @@ public class Main {
                 do{
                     System.out.print("Update Birthdate (YYYY-MM-DD): ");
                     birthDate = scanner.nextLine();
-                }while(!(check.validBdate(birthDate)&&check.validLeap(birthDate)));
+                }while(!(check.validBdate(birthDate)));
                 student.setBirthdate(birthDate);
                 System.out.println("\nUpdated Birthdate to " + student.getBirthdate() + ".");
                 break;
@@ -586,7 +562,6 @@ public class Main {
         int yearGraduated;
         long SSSNum, TINNum, SGLicense, SBRNum;
         System.out.println("");
-        //TODO: ADD VALIDATION HERE
         switch (dataField) {
             case 1:
                 do{
@@ -624,7 +599,7 @@ public class Main {
                 do{
                     System.out.print("Update Birthdate (YYYY-MM-DD): ");
                     birthDate = scanner.nextLine();
-                }while(!(check.validBdate(birthDate)&&check.validLeap(birthDate)));
+                }while(!(check.validBdate(birthDate)));
                 student.setBirthdate(birthDate);
                 System.out.println("\nUpdated Birthdate to " + student.getBirthdate() + ".");
                 break;
@@ -689,7 +664,7 @@ public class Main {
                     System.out.print("Update Security Guard License Number & Expiry: ");
                     SGLicense = Long.parseLong(scanner.nextLine());
                     expiryDate = scanner.nextLine();
-                }while(!check.validSG(SGLicense)||(!(check.validExpiry(expiryDate)&&check.validLeap(expiryDate))));
+                }while(!check.validSG(SGLicense)||(!(check.validExpiry(expiryDate))));
                 student.setSGLicenseAndExpiry(SGLicense, expiryDate);
                 System.out.println("\nUpdated Security Guard License Number & Expiry to " + student.getSGLicense() + " & " + student.getExpiryDate() + ".");
             case 14:
@@ -712,7 +687,6 @@ public class Main {
         int yearGraduated;
         long SSSNum, TINNum;
         System.out.println("");
-        //TODO: ADD VALIDATION HERE
         switch (dataField) {
             case 1:
                 do{
@@ -750,7 +724,7 @@ public class Main {
                 do{
                     System.out.print("Update Birthdate (YYYY-MM-DD): ");
                     birthDate = scanner.nextLine();
-                }while(!(check.validBdate(birthDate)&&check.validLeap(birthDate)));
+                }while(!(check.validBdate(birthDate)));
                 student.setBirthdate(birthDate);
                 System.out.println("\nUpdated Birthdate to " + student.getBirthdate() + ".");
                 break;
@@ -881,12 +855,6 @@ public class Main {
         wr.readPLTC();
         wr.readRTC();
         wr.readBSSC();
-
-        // TODO REMOVE
-        for (int i: idList) {
-            System.out.print(i + ", ");
-        }
-        System.out.println("");
 
         // WELCOME MESSAGE
         System.out.println("Welcome to the Security Trainee Information System!");
