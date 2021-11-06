@@ -25,6 +25,11 @@ The trainee may belong to the **PLTC (Pre-License Training Course)**, **RTC (Ref
     
     https://www.figma.com/file/J2lLPzzSgiFxwhU9PEPFGj/BASIC-SECURITY-TRAINEE-INFORMATION-SYSTEM
 
+- GitHub Respository
+  
+    https://github.com/tremor6916/oop-summative
+  
+    
 # __AUTHORS__
 - Louis Miguel Pawaon, BS-CS 2A
 - Cyril Olanolan, BS-CS 2A
