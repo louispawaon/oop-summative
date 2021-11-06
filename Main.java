@@ -82,15 +82,15 @@ public class Main {
         do{
             System.out.print("Surname: ");
             surname = scanner.nextLine();
-        }while(!check.validSurname(surname));
+        }while(!(check.validSurname(surname)));
         do{
             System.out.print("\nName: ");
             name = scanner.nextLine();
-        }while(!check.validName(name));
+        }while(!(check.validName(name)));
         do{
             System.out.print("\nMiddle Name: ");
             middleName = scanner.nextLine();
-        }while(!check.validMidName(middleName));
+        }while(!(check.validMidName(middleName)));
         do{
             System.out.print("\n> Birthdate (YYYY-MM-DD): ");
             birthDate = scanner.nextLine();
@@ -98,24 +98,24 @@ public class Main {
         do {
             System.out.print("\n> Sex (M, F, X (Non-Binary)): ");
             sex = scanner.nextLine().toUpperCase().charAt(0);
-        } while (!check.validSex(sex));
+        } while (!(check.validSex(sex)));
         do{
             System.out.print("\n> Educational Attainment: ");
             educationalAttainment = scanner.nextLine();
-        } while(!check.validGraduate(educationalAttainment));
+        } while(!(check.validGraduate(educationalAttainment)));
         do{
             System.out.print("\n> Year Graduated: ");
             yearGraduated = scanner.nextInt();
-        }while(!check.validYearGrad(yearGraduated)); 
+        }while(!(check.validYearGrad(yearGraduated))); 
+        scanner.nextLine();
         do{
             System.out.print("\n> Cellphone Number: ");
-            scanner.nextLine();
             cpNum = scanner.nextLine();
-        }while(!check.validPhone(cpNum));
+        }while(!(check.validPhone(cpNum)));
         do{
             System.out.print("\n> E-mail Address: ");
             email = scanner.nextLine(); 
-        }while(!check.validEmail(email));
+        }while(!(check.validEmail(email)));
 
         // ADDITIONAL DATA FOR RTC or BSSC
         if (course == 2) { // RTC
@@ -123,25 +123,27 @@ public class Main {
             do{
                 System.out.print("\n> SSS Number: "); 
                 SSSNum = scanner.nextLong();
-            }while(!check.validSSS(SSSNum));
+            }while(!(check.validSSS(SSSNum)));
+            scanner.nextLine();
             do{
                 System.out.print("\n> TIN Number: "); 
                 TINNum = scanner.nextLong();
-            }while(!check.validTIN(TINNum));
+            }while(!(check.validTIN(TINNum)));
+            scanner.nextLine();
             do{
                 System.out.print("\n> SG License Number: "); 
                 SGLicense = scanner.nextLong();
-            }while(!check.validSG(SGLicense));
+            }while(!(check.validSG(SGLicense)));
+            scanner.nextLine();
             do{ 
                 System.out.print("\n> SG License Expiry Date (YYYY-MM-DD): "); 
-                scanner.nextLine();
                 expiryDate = scanner.nextLine();
             }while(!(check.validExpiry(expiryDate)));
             do{
                 System.out.print("\n> SBR Number: "); 
                 SBRNum = scanner.nextLong();
                 scanner.nextLine();
-            }while(!check.validSBR(SBRNum));
+            }while(!(check.validSBR(SBRNum)));
 
             // CREATE RTC OBJECT
             RTCStudent refresher = new RTCStudent.RTCStudentBuilder()
@@ -173,13 +175,13 @@ public class Main {
             do{
                 System.out.print("\n> SSS Number: ");
                 SSSNum = scanner.nextLong();
-                scanner.nextLine();
-            }while(!check.validSSS(SSSNum));
+            }while(!(check.validSSS(SSSNum)));
+            scanner.nextLine();
             do{
                 System.out.print("\n> TIN Number: "); 
                 TINNum = scanner.nextLong();
-                scanner.nextLine();
-            }while(!check.validTIN(TINNum));
+            }while(!(check.validTIN(TINNum)));
+            scanner.nextLine();
 
             //CREATE BSSC OBJECT
             BSSCStudent basic = new BSSCStudent.BSSCStudentBuilder()

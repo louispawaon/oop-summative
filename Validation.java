@@ -120,7 +120,7 @@ public class Validation {
           String str[] = expiryDate.split("-");
           int year = Integer.parseInt(str[0]);
 
-          if(year > currentYear || year < currentYear-100){
+          if(year < currentYear-100){
             return false; 
           }
 

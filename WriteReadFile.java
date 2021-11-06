@@ -42,7 +42,7 @@ public class WriteReadFile {
             preLi.write(sb.toString());
             preLi.close();
         } catch (Exception e) {
-            System.out.println(e);
+            //System.out.println(e);
         }
     }
 
@@ -102,7 +102,7 @@ public class WriteReadFile {
             br.close();
         }
         catch(Exception e){
-            System.out.println(e);
+            //System.out.println(e);
         }
     }
     
@@ -151,7 +151,7 @@ public class WriteReadFile {
             retrain.write(sb.toString());
             retrain.close();
         } catch (Exception e) {
-            System.out.println(e);
+            //System.out.println(e);
         }
     }
 
@@ -219,7 +219,7 @@ public class WriteReadFile {
             br.close();
         }
         catch(Exception e){
-            System.out.println(e);
+            //System.out.println(e);
         }
     }
 
@@ -324,7 +324,7 @@ public class WriteReadFile {
             br.close();
         }
         catch(Exception e){
-            System.out.println(e);
+            //System.out.println(e);
         }
     }
 
